@@ -1,1 +1,2 @@
 # 5C_AvvedutoCecireCinquetti_POI
+Progetto Point Of Interest Luoghi Shakespeariani
