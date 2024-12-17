@@ -2,7 +2,7 @@
   "name": "5c_avvedutocecirecinquetti_poi",
   "version": "0.1.0",
   "description": "Progetto Point Of Interest Luoghi Shakespeariani",
-  "main": "index.js",
+  "main": "src/index.js",
   "directories": {
     "doc": "docs"
   },
@@ -18,5 +18,8 @@
     "poi"
   ],
   "author": "Luca Avveduto, Simone Cecire, Simone Cinquetti",
-  "license": "MIT"
+  "license": "CC BY-NC-ND 4.0",
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
 }
