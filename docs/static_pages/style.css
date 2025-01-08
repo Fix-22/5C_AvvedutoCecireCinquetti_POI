@@ -1,0 +1,8 @@
+img {
+    max-width: 600px;
+    max-height: 500px;
+}
+
+textarea {
+    resize: none;
+}

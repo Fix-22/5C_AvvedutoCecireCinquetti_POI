@@ -1,14 +1,166 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css" type="text/css"/>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
-    <link href="./style.css" rel="stylesheet">
-    <title>Document</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" />
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Login | POI - Shakespeare's Places</title>
 </head>
 <body>
-    
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="home.html"><button type="button" class="btn btn-light" id="searchButton"><i class="bi bi-house"></i> Home</button></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navbar-brand">POI - Shakespeare's Places</a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-light" id="searchButton" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="bi bi-file-earmark-plus"></i> Add article</button>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h4>Administration</h4>
+        <h1>Administration page</h1>
+        <h2>Table of contents</h2>
+        <table class="table table-bordered">
+            <tr><th class="table-secondary">Play title</th><th class="table-secondary">Manage</th></tr>
+            <tr>
+                <td><a href="article.html">Play 1</a></td>
+                <td>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="article.html">Play 2</a></td>
+                <td>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="article.html">Play 3</a></td>
+                <td>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="article.html">Play 4</a></td>
+                <td>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="article.html">Play 5</a></td>
+                <td>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="article.html">Play 6</a></td>
+                <td>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="article.html">Play 7</a></td>
+                <td>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="article.html">Play 8</a></td>
+                <td>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="article.html">Play 9</a></td>
+                <td>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="article.html">Play 10</a></td>
+                <td>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal fade" id="modalForm" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">Add/Edit article</h2>
+                    <button type="button" class="btn-close clearForm" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <form class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4 ms-auto">
+                                <input type="text" class="form-control" placeholder="Title (precompiled if 'edit' is pressed)" id="playTitle">
+                            </div>
+                            <div class="col-md-4 ms-auto">
+                                <textarea class="form-control" rows="8" placeholder="Text (precompiled if 'edit' is pressed)" id="playText"></textarea>
+                            </div>
+                            <div class="col-md-4 ms-auto">
+                                <input type="text" class="form-control" placeholder="Main image link (precompiled if 'edit' is pressed)" id="playMainLink">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 ms-auto">
+                                <input type="text" class="form-control" placeholder="Location (precompiled if 'edit' is pressed)" id="playLocation">
+                            </div>
+                            <div class="col-md-4 ms-auto">
+                                <textarea class="form-control" rows="4" placeholder="Main characters (precompiled if 'edit' is pressed)" id="playCharacters"></textarea>
+                            </div>
+                            <div class="col-md-4 ms-auto">
+                                <input type="text" class="form-control" placeholder="Second image link (precompiled if 'edit' is pressed)" id="playSecondLink">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 ms-auto">
+                                <input type="text" class="form-control" placeholder="Pubblication year (precompiled if 'edit' is pressed)" id="playPubblicationYear">
+                            </div>
+                            <div class="col-md-4 ms-auto">
+                                <input type="text" class="form-control" placeholder="Era (precompiled if 'edit' is pressed)" id="playEra">
+                            </div>
+                            <div class="col-md-4 ms-auto">
+                                <input type="text" class="form-control" placeholder="Third image link (precompiled if 'edit' is pressed)" id="playThirdLink">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger clearForm" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary clearForm" id="submitButton">Add/Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
