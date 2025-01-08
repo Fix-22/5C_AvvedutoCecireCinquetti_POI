@@ -6,3 +6,8 @@ img {
 textarea {
     resize: none;
 }
+
+.logo {
+    width: 51px;
+    height: 51px;
+}
