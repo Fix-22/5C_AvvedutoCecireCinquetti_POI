@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" />
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <title>Login | POI - Shakespeare's Places</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -18,139 +19,179 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav w-100 d-flex justify-content-between">
                     <li class="nav-item">
-                        <a href="home.html"><button type="button" class="btn btn-light" id="searchButton"><i class="bi bi-house"></i> Home</button></a>
+                        <a href="home.html"><button type="button" class="btn btn-light" id="searchButton"><i
+                                    class="bi bi-house"></i> Home</button></a>
                     </li>
                     <li class="nav-item">
                         <img src="logo.png" class="logo navbar-brand">
                     </li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-light" id="searchButton" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="bi bi-file-earmark-plus"></i> Add article</button>
+                        <button type="button" class="btn btn-dark" id="searchButton" data-bs-toggle="modal"
+                            data-bs-target="#modalForm"><i class="bi bi-file-earmark-plus"></i> Add article</button>
                 </ul>
             </div>
         </div>
     </nav>
 
     <div class="container">
-        <h4>Administration</h4>
-        <h1>Administration page</h1>
-        <h2>Table of contents</h2>
-        <table class="table table-bordered">
-            <tr><th class="table-secondary">Play's title</th><th class="table-secondary">Manage</th></tr>
-            <tr>
-                <td>Play 1</td>
-                <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Play 2</td>
-                <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Play 3</td>
-                <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Play 4</td>
-                <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Play 5</td>
-                <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Play 6</td>
-                <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Play 7</td>
-                <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Play 8</td>
-                <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Play 9</td>
-                <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Play 10</td>
-                <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm">Edit</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-        </table>
+        <div class="row justify-center">
+            <div class="col-12">
+                <div class="long-line"></div>
+            </div>
+        </div>
+        <div class="row">
+            <p class="topic">POI - Shakespeare's Places</h1>
+            <h1>Administration</h1>
+        </div>
+        <div class="places-table" id="adm-tab">
+            <table class="table table-focus">
+                <thead class="sticky-on-top">
+                    <tr>
+                        <th class="table-secondary">Play's title</th>
+                        <th class="table-secondary">Manage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Play 1</td>
+                        <td>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#modalForm">Edit</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Play 2</td>
+                        <td>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#modalForm">Edit</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Play 3</td>
+                        <td>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#modalForm">Edit</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Play 4</td>
+                        <td>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#modalForm">Edit</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Play 5</td>
+                        <td>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#modalForm">Edit</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Play 6</td>
+                        <td>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#modalForm">Edit</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Play 7</td>
+                        <td>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#modalForm">Edit</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Play 8</td>
+                        <td>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#modalForm">Edit</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Play 9</td>
+                        <td>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#modalForm">Edit</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Play 10</td>
+                        <td>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#modalForm">Edit</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-
     <div class="modal fade" id="modalForm" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title" id="exampleModalLabel">Add/Edit article</h2>
-                    <button type="button" class="btn-close clearForm" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close clearForm" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="modalBody">
                     <form class="container-fluid">
                         <div class="row">
                             <div class="col-md-4 ms-auto">
-                                <input type="text" class="form-control" placeholder="Title (precompiled if 'edit' is pressed)" id="playTitle">
+                                <input type="text" class="form-control"
+                                    placeholder="Title (precompiled if 'edit' is pressed)" id="playTitle">
                             </div>
                             <div class="col-md-4 ms-auto">
-                                <textarea class="form-control" rows="8" placeholder="Text (precompiled if 'edit' is pressed)" id="playText"></textarea>
+                                <textarea class="form-control" rows="8"
+                                    placeholder="Text (precompiled if 'edit' is pressed)" id="playText"></textarea>
                             </div>
                             <div class="col-md-4 ms-auto">
-                                <input type="text" class="form-control" placeholder="Main image link (precompiled if 'edit' is pressed)" id="playMainLink">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 ms-auto">
-                                <input type="text" class="form-control" placeholder="Location (precompiled if 'edit' is pressed)" id="playLocation">
-                            </div>
-                            <div class="col-md-4 ms-auto">
-                                <textarea class="form-control" rows="4" placeholder="Main characters (precompiled if 'edit' is pressed)" id="playCharacters"></textarea>
-                            </div>
-                            <div class="col-md-4 ms-auto">
-                                <input type="text" class="form-control" placeholder="Second image link (precompiled if 'edit' is pressed)" id="playSecondLink">
+                                <input type="text" class="form-control"
+                                    placeholder="Main image link (precompiled if 'edit' is pressed)" id="playMainLink">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4 ms-auto">
-                                <input type="text" class="form-control" placeholder="Pubblication year (precompiled if 'edit' is pressed)" id="playPubblicationYear">
+                                <input type="text" class="form-control"
+                                    placeholder="Location (precompiled if 'edit' is pressed)" id="playLocation">
                             </div>
                             <div class="col-md-4 ms-auto">
-                                <input type="text" class="form-control" placeholder="Era (precompiled if 'edit' is pressed)" id="playEra">
+                                <textarea class="form-control" rows="4"
+                                    placeholder="Main characters (precompiled if 'edit' is pressed)"
+                                    id="playCharacters"></textarea>
                             </div>
                             <div class="col-md-4 ms-auto">
-                                <input type="text" class="form-control" placeholder="Third image link (precompiled if 'edit' is pressed)" id="playThirdLink">
+                                <input type="text" class="form-control"
+                                    placeholder="Second image link (precompiled if 'edit' is pressed)"
+                                    id="playSecondLink">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 ms-auto">
+                                <input type="text" class="form-control"
+                                    placeholder="Pubblication year (precompiled if 'edit' is pressed)"
+                                    id="playPubblicationYear">
+                            </div>
+                            <div class="col-md-4 ms-auto">
+                                <input type="text" class="form-control"
+                                    placeholder="Era (precompiled if 'edit' is pressed)" id="playEra">
+                            </div>
+                            <div class="col-md-4 ms-auto">
+                                <input type="text" class="form-control"
+                                    placeholder="Third image link (precompiled if 'edit' is pressed)"
+                                    id="playThirdLink">
                             </div>
                         </div>
                     </form>
@@ -163,4 +204,6 @@
         </div>
     </div>
 </body>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 </html>
