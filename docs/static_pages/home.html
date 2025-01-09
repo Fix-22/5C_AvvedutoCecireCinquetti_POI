@@ -18,46 +18,65 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav w-100 d-flex justify-content-between">
                     <li class="nav-item">
-                        <button type="button" class="btn btn-light" id="searchButton"><i class="bi bi-search"></i> Search</button>
+                        <button type="button" class="btn btn-light" id="searchButton"><i class="bi bi-search"></i>Search</button>
                     </li>
                     <li class="nav-item">
                         <img src="logo.png" class="logo navbar-brand">
                     </li>
                     <li class="nav-item">
-                        <a href="login.html"><button type="button" class="btn btn-light" id="searchButton"><i class="bi bi-gear"></i> Administration</button></a>
+                        <a href="login.html">
+                            <button type="button" class="btn btn-dark"><i class="bi bi-gear"></i> Admin</button>
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav>    
 
-    <div class="input-group">
+    <div id="searchDiv">
         <input type="search" class="form-control" placeholder="Search places" id="searchText">
-        <button type="button" class="btn btn-primary" id="searchButton"><i class="bi bi-search"></i></button>
     </div>
 
     <div class="container">
-        <h1>POI - Shakespeare's Places</h1>
-        <h2>Description</h2>
-        <p>Description.</p>
-
-        <div class="container">
+        <div class="row justify-center">
+            <div class="col-12">
+                <div class="long-line"></div>
+            </div>
+        </div>
+        <div class="row">
+            <p class="topic">POI - Shakespeare's Places</h1>
+            <h1>Home</h1>
+            <p class="content">Initial description.</p>
+        </div>
+        <div class="row" id="summary-end">
+            <div class="col">
+                <p>Authors</p><p>Modify date</p>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="short-line"></div>
+        </div>
+        <div class="container main-content">
             <div class="row">
-                <div class="col">
-                    <table class="table table-bordered">
-                        <tr><th class="table-secondary">Play's title</th><th class="table-secondary">Place</th></tr>
-                        <tr><td><a href="article.html">Play 1</a></td><td>Place 1</td></tr>
-                        <tr><td><a href="article.html">Play 2</a></td><td>Place 2</td></tr>
-                        <tr><td><a href="article.html">Play 3</a></td><td>Place 3</td></tr>
-                        <tr><td><a href="article.html">Play 4</a></td><td>Place 4</td></tr>
-                        <tr><td><a href="article.html">Play 5</a></td><td>Place 5</td></tr>
-                        <tr><td><a href="article.html">Play 6</a></td><td>Place 6</td></tr>
-                        <tr><td><a href="article.html">Play 7</a></td><td>Place 7</td></tr>
-                        <tr><td><a href="article.html">Play 8</a></td><td>Place 8</td></tr>
-                        <tr><td><a href="article.html">Play 9</a></td><td>Place 9</td></tr>
-                        <tr><td><a href="article.html">Play 10</a></td><td>Place 10</td></tr>
+                <div class="col" id="places-table">
+                    <table class="table table-striped">
+                        <thead class="sticky-on-top">
+                            <tr><th class="table-secondary">Play's title</th><th class="table-secondary">Place</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><a href="article.html">Play 1</a></td><td>Place 1</td></tr>
+                            <tr><td><a href="article.html">Play 2</a></td><td>Place 2</td></tr>
+                            <tr><td><a href="article.html">Play 3</a></td><td>Place 3</td></tr>
+                            <tr><td><a href="article.html">Play 4</a></td><td>Place 4</td></tr>
+                            <tr><td><a href="article.html">Play 5</a></td><td>Place 5</td></tr>
+                            <tr><td><a href="article.html">Play 6</a></td><td>Place 6</td></tr>
+                            <tr><td><a href="article.html">Play 7</a></td><td>Place 7</td></tr>
+                            <tr><td><a href="article.html">Play 8</a></td><td>Place 8</td></tr>
+                            <tr><td><a href="article.html">Play 9</a></td><td>Place 9</td></tr>
+                            <tr><td><a href="article.html">Play 10</a></td><td>Place 10</td></tr>
+                        </tbody>
                     </table>
                 </div>
                 <div class="col">
