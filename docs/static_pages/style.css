@@ -87,3 +87,13 @@ div.container-fluid,.navbar {
     position: sticky;
     top: 0 !important;
 }
+
+td > a {
+    text-decoration: none;
+    color: black;
+    font-style: oblique;
+}
+
+.table-focus > tbody > tr:hover > td {
+    background-color: beige !important;
+}
