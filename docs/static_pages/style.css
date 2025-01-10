@@ -94,6 +94,11 @@ td > *, td {
     font-style: oblique;
 }
 
+a {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .table-focus > tbody > tr:hover > td {
     background-color: beige !important;
 }
