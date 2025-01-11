@@ -88,6 +88,19 @@ nav {
     top: 0 !important;
 }
 
+#searchDiv {
+    top: 87px !important;
+}
+
+#searchText {
+    border: 2px solid black !important;
+}
+
+.form-control:focus {
+    border-color: black !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(63, 63, 63, 0.6) !important;
+}
+
 .sticky-on-top {
     position: sticky;
     top: 0 !important;
