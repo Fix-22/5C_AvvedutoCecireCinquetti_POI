@@ -71,16 +71,21 @@ div.container-fluid,.navbar {
 }
 
 .places-table {
-    width: 100% ;
-    max-height: 60vh ;
-    overflow-y: scroll ;
-    overflow-x: auto ;
-    margin-left: 2% ;
+    width: 100%;
+    max-height: 60vh;
+    overflow-y: scroll;
+    overflow-x: auto;
+    margin-left: 2%;
     table-layout: fixed;
 }
 
 .searchButton {
     width: 300%;
+}
+
+nav {
+    position: sticky;
+    top: 0 !important;
 }
 
 .sticky-on-top {
@@ -107,4 +112,22 @@ a {
     position: relative !important;
     margin-top: 3%;
     place-items: center !important;
+}
+
+.inputs {
+    height: 50vh !important;
+    width: 50vw !important;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+
+.inputs > * {
+    margin: 6% 0 0 6%;
+}
+
+.inputs > input{
+    border: 2px solid black !important;
 }
