@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-    <title>Document</title>
+    <title>Details | POI - Shakespeare's Places</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -18,16 +20,18 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav w-100 d-flex justify-content-between">
                     <li class="nav-item">
-                        <a href="home.html"><button type="button" class="btn btn-light" id="searchButton"><i class="bi bi-house"></i> Home</button></a>
+                        <a href="home.html"><button type="button" class="btn btn-light" id="searchButton"><img
+                                    src="home.png" alt="home"></button></a>
                     </li>
                     <li class="nav-item">
                         <img src="logo.png" class="logo navbar-brand">
                     </li>
                     <li class="nav-item">
                         <a href="login.html">
-                            <button type="button" class="btn btn-dark"><i class="bi bi-gear"></i> Administration</button>
+                            <button type="button" class="btn btn-dark"><i class="bi bi-gear"></i>
+                                Administration</button>
                         </a>
                     </li>
                 </ul>
@@ -40,32 +44,32 @@
             <div class="long-line"></div>
         </div>
         <div class="row">
-            <p class="topic">Topic</h1>
+            <p class="topic">Details | POI - Shakespeare's Places</p>
         </div>
-        <h1>Title</h1>
-        <div class="row">
-            <h5 class="topic">Presentation Content</h5>
-        </div>
-        <div class="row">
-            <p>Author/s</p>
-        </div>
+        <h1>Work title</h1>
         <div class="row">
             <p>Modify date</p>
+            <p>Author/s</p>
         </div>
         <div class="short-line"></div>
-        <img src="https://drive.google.com/file/d/1aFU7koMQ_cpSKa6PaXckjQWGyYRFE3aL/view?usp=sharing" alt="image placeholder A">
-        <div class="row">
-            <h5 class="topic">Presentation Content</h5>
-        </div>
-        <div class="row">
-            <div class="col-md-5">
-                <img src="https://drive.google.com/file/d/177L5AZBESWYucW61P4sYHmXGV0FgwnlE/view?usp=sharing" alt="image placeholder B">
+        <div class="article-content">
+            <div class="row main-img-container">
+                <img src="https://drive.google.com/thumbnail?id=1duRMOJuilUGXVVhPjHOoqM7cqjVg8VAf&sz=w1000" alt="image A">
             </div>
-            <div class="col-5 offset-md-2">
-                <img src="https://drive.google.com/file/d/12KycaXvGns9cXJMfzJdYtfiXgWZLxjjB/view?usp=sharing" alt="image placeholder C">
+            <div class="row">
+                <p>Presentation Content</p>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <img class="vert-img" src="https://drive.google.com/thumbnail?id=1sKulbypGZJIn-Q8iqSH1KUxwGHHtYg5l&sz=w1000" alt="image B">
+                </div>
+                <div class="col">
+                    <img class="vert-img" src="https://drive.google.com/thumbnail?id=1VsoJF5TlLJmzN7xPW6BQNwYGxIjxY4P4&sz=w1000" alt="image C">
+                </div>
             </div>
         </div>
     </div>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

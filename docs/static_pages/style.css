@@ -1,4 +1,4 @@
-img {
+#map, .vert-img {
     max-width: 600px;
     max-height: 500px;
 }
@@ -68,6 +68,7 @@ div.container-fluid,.navbar {
 
 .main-content {
     margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .places-table {
@@ -143,4 +144,21 @@ a {
 
 .inputs > input{
     border: 2px solid black !important;
+}
+
+.article-content > * {
+    margin-top: 7%;
+    margin-bottom: 3%;
+}
+
+.main-img-container {
+    display: flex !important;
+    justify-content: center !important;
+    place-items: center !important;
+}
+
+.main-img-container > img {
+    max-width: 60%;
+    max-height: 60%;
+    object-fit: cover;
 }
