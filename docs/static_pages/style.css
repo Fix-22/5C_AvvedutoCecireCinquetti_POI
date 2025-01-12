@@ -162,3 +162,9 @@ a {
     max-height: 60%;
     object-fit: cover;
 }
+
+.md-row {
+    margin: 2% 0 2% 0;
+    display: flex !important;
+    place-items: center !important;
+}
