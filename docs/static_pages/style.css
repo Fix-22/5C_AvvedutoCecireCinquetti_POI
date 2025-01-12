@@ -73,11 +73,15 @@ div.container-fluid,.navbar {
 
 .places-table {
     width: 100%;
-    max-height: 60vh;
+    max-height:60vh;
     overflow-y: scroll;
     overflow-x: auto;
     margin-left: 2%;
     table-layout: fixed;
+}
+
+.places-table > table > tbody > tr {
+    height: 10vh !important;
 }
 
 .searchButton {
