@@ -17,6 +17,7 @@ const fetchComponent = generateFetchComponent();
 const geoencoder = generateGeoencoder();
 
 const playsTableRowHomeTemplate = '<tr><td><a href="#article" id="%PLAYTITLE">%PLAYTITLE <i class="bi bi-box-arrow-up-right"></i></a></td><td>%PLACE</td></tr>';
+const articleTemplate = '';
 
 fetch("./conf.json")
 .then(r => r.json())
