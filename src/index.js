@@ -1,21 +1,23 @@
 import {generateNavigator} from "./scripts/navigatorComponent/navigatorComponent.js";
 import {generateFetchComponent} from "./scripts/fetchComponent/fetchComponent.js";
 import {generateGeoencoder} from "./scripts/geoencoderComponent/geoencoderComponent.js";
+import {generateMap} from "./scripts/mapComponent/mapComponent.js";
 
 const modalBody = document.getElementById("modalBody");
 const tableContainer = document.getElementById("tableContainer");
 const spinner = document.getElementById("spinner");
 const searchbarContainer = document.getElementById("searchbarContainer");
-const mapContainer = document.getElementById("map");
 const loginContainer = document.getElementById("loginContainer");
 
 const playsTableHomeBody = document.getElementById("playsTableHomeBody");
 const pages = document.getElementById("pages");
+const mapContainer = document.getElementById("mapContainer");
 const articleContainer = document.getElementById("article");
 
 generateNavigator(pages);
 const fetchComponent = generateFetchComponent();
 const geoencoder = generateGeoencoder();
+const map = generateMap(mapContainer);
 
 const playsTableRowHomeTemplate = '<tr><td><a href="#article" id="%PLAYTITLE" class="articleLink">%PLAYTITLE <i class="bi bi-box-arrow-up-right"></i></a></td><td>%PLACE</td></tr>';
 const articleTemplate = `<div class="container">
@@ -63,6 +65,7 @@ fetch("./conf.json")
 
     fetchComponent.build(cacheToken);
     geoencoder.build(mapsToken);
+    map.build([41.896705, 12.482183]);
 
     let remoteData = {};
 
@@ -86,4 +89,6 @@ fetch("./conf.json")
             };
         })
     });
+
+    map.render();
 });
