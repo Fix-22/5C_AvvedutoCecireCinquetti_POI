@@ -88,6 +88,7 @@ div.container-fluid,.navbar {
 nav {
     position: sticky !important;
     top: 0 !important;
+    z-index: 100000;
 }
 
 #searchDiv {
@@ -172,12 +173,19 @@ a {
     place-items: center !important;
 }
 
-@media (max-width: 768px) {
+img {
+    transition: .2s;
+}
 
+img:hover:not(#map) {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
     #adm-tab {
-        height: 100vh !important;
+        height: 70vh !important;
         margin: 15% 0 !important;
-        overflow-y: visible !important;
+        overflow-y: scroll !important;
     }
     .places-table {
         max-height:30vh;
