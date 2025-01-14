@@ -1,10 +1,10 @@
 export const generateMap = (parentElement) => {
     let map;
     let places = [];
-    
+    let zoom = 20;
     return {
         build: (startCoords) => {
-            map = L.map(parentElement).setView(startCoords, 11);
+            map = L.map(parentElement).setView(startCoords, zoom);
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -28,6 +28,9 @@ export const generateMap = (parentElement) => {
         },
         setPlaces: (inputPlaces) => {
             places = inputPlaces;
+        },
+        zoomToPlace: (coords,zoom) => {
+            map.flyTo(coords, zoom);
         }
     };
 };
