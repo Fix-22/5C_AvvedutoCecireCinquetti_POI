@@ -25,13 +25,13 @@ const articleTemplate = `<div class="container">
             <div class="long-line"></div>
         </div>
         <div class="row">
-            <p class="topic">%PLAYTITLE | POI - Shakespeare's Places</p>
+            <p class="topic" id="title">%PLAYTITLE | POI - Shakespeare's Places</p>
         </div>
         <h1>%PLAYTITLE</h1>
         <div class="row">
-            <h6>Location: %PLACE</h6>
-            <h6>Year of pubblication: %YEAROFPUB</h6>
-            <h6>Era: %ERA</h6>
+            <h6 class="topic">Location: %PLACE</h6>
+            <h6 class="topic">Year of pubblication: %YEAROFPUB</h6>
+            <h6 class="topic">Era: %ERA</h6>
         </div>
         <div class="short-line"></div>
         <div class="article-content">
@@ -77,6 +77,12 @@ fetch("./conf.json")
         let values = Object.values(remoteData);
 
         for (let i = 0; i < keys.length; i++) {
+            geoencoder.encode(values[i].place).then(data => {
+                let place = data;
+                place.play = keys[i];
+                map.addPlace(place);
+                map.render();
+            });
             newHTML += playsTableRowHomeTemplate.replaceAll("%PLAYTITLE", keys[i]).replace("%PLACE", values[i].place);
         }
         playsTableHomeBody.innerHTML = newHTML;
@@ -84,10 +90,10 @@ fetch("./conf.json")
         document.querySelectorAll(".articleLink").forEach(a => {
             a.onclick = () => {
                 let currentArticleData = remoteData[a.id];
-                // FIXME
-                articleContainer.innerHTML = articleTemplate.replaceAll("%PLAYTITLE", a.id).replace("%PLACE", currentArticleData.place).replace("%YEAROFPUB", currentArticleData.yearofpub).replace("%ERA", currentArticleData.era)
+                articleContainer.innerHTML = articleTemplate.replaceAll("%PLAYTITLE", a.id).replace("%PLACE", currentArticleData.place).replace("%YEAROFPUB", currentArticleData.yearofpub).replace("%ERA", currentArticleData.era).replace("%RESUME", currentArticleData.resume).replace("%CHARACTERS", currentArticleData.characters).replace("%IMGLINK1", currentArticleData.images[0]).replace("%IMGLINK2", currentArticleData.images[1]).replace("%IMGLINK3", currentArticleData.images[2]);
             };
-        })
+        });
+        spinner.classList.add("d-none");
     });
 
     map.render();
