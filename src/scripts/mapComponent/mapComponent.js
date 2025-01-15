@@ -1,7 +1,7 @@
 export const generateMap = (parentElement) => {
     let map;
     let places = [];
-    let zoom = 5;
+    let zoom = 20;
     return {
         build: (startCoords) => {
             map = L.map(parentElement).setView(startCoords, zoom);
@@ -13,8 +13,8 @@ export const generateMap = (parentElement) => {
         render: () => {
             places.forEach((place) => {
                 if (place) {
-                    const marker = L.marker(place.place.coords).addTo(map);
-                    marker.bindPopup("<b>" + place.place.name + "</b><br><b>Play:</b> " + place.title);
+                    const marker = L.marker(place.coords).addTo(map);
+                    marker.bindPopup("<b>" + place.place + "</b><br><b>Play:</b> " + place.play);
                 }
             });
         },
