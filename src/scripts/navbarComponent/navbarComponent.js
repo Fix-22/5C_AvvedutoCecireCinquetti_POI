@@ -1,6 +1,5 @@
 export function navBarComponent(parentElement) {
     let elements;
-    let callback;
     return {
         build: (list) => {
           elements = list;
@@ -27,16 +26,13 @@ export function navBarComponent(parentElement) {
                 </div>
             </nav>`;
             parentElement.innerHTML = newNavBar;
+            const btn = document.querySelector("#searchButton");
+            if (btn)  
+                btn.onclick = () => {
+                const container = document.querySelector("#searchbarContainer");
+                if (container.classList.contains("d-none")) container.classList.remove("d-none");
+                else  container.classList.add("d-none");
+            }
         }
-            /*document.querySelector("#open").onclick = () => document.querySelector("#result").innerText = "";
-
-            config.tipologie.forEach(element => document.getElementById(element).onclick = () => {
-                activeNavBar(element, config);
-                callback(element);
-            })
-        },
-        callback(value){
-            callback = value;
-        }*/
     }
 }

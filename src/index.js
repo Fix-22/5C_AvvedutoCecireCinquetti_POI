@@ -5,6 +5,7 @@ import {generateMap} from "./scripts/mapComponent/mapComponent.js";
 import {generateHomeTable} from "./scripts/homeTableComponent/homeTableComponent.js";
 import {generateSearchbar} from "./scripts/searchBarComponent/searchBarComponent.js";
 import {generateAdminTable} from "./scripts/adminTableComponent/adminTableComponent.js";
+import { navBarComponent } from "./scripts/navbarComponent/navbarComponent.js";
 
 const modalBody = document.getElementById("modalBody");
 const loginContainer = document.getElementById("loginContainer");
@@ -24,6 +25,7 @@ const map = generateMap(mapContainer);
 const homeTable = generateHomeTable(homeTableContainer);
 const searchbar = generateSearchbar(searchbarContainer);
 const adminTable = generateAdminTable(adminTableContainer);
+const navbar = navBarComponent(document.querySelector(".navbarContainer"));
 
 fetch("./conf.json")
 .then(r => r.json())    
@@ -33,6 +35,13 @@ fetch("./conf.json")
 
     fetchComponent.build(cacheToken);
     geoencoder.build(mapsToken);
+
+    navbar.build([
+        '<button type="button" class="btn btn-light" id="searchButton"><i class="bi bi-search"></i> Search</button>',
+        '<img src="/src/assets/logo.png" class="logo navbar-brand">',
+        '<a href="#admin"><button type="button" class="btn btn-dark"><i class="bi bi-gear"></i> Administration</button></a>'
+    ]);
+    navbar.render();
 
     let remoteData;
 
