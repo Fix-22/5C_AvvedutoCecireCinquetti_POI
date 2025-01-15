@@ -13,7 +13,7 @@ export const generateSearchbar = (parentElement) => {
             cancelCallback = inputCancelCallback;
         },
         render: () => {
-            let HTML = '<div id="searchDiv" class="sticky-on-top"> <input type="search" class="form-control" placeholder="' +placeholder + '" id="searchText"></div>'
+            let HTML = '<input type="search" class="form-control" placeholder="' + placeholder + '" id="searchText">'
 
             parentElement.innerHTML = HTML;
 
@@ -21,12 +21,12 @@ export const generateSearchbar = (parentElement) => {
                 if (event.key === "Enter") {
                     let searchText = document.getElementById("searchText").value;
                 
-                if (searchText) {
-                    searchCallback(searchText);
-                }
-                else {
-                    cancelCallback();
-                }
+                    if (searchText) {
+                        searchCallback(searchText);
+                    }
+                    else {
+                        cancelCallback();
+                    }
                 }
               });
 
