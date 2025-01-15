@@ -13,8 +13,8 @@ export const generateMap = (parentElement) => {
         render: () => {
             places.forEach((place) => {
                 if (place) {
-                    const marker = L.marker(place.coords).addTo(map);
-                    marker.bindPopup("<b>" + place.place + "</b><br><b>Play:</b> " + place.play);
+                    const marker = L.marker(place.place.coords).addTo(map);
+                    marker.bindPopup("<b>" + place.place.name + "</b><br><b>Play:</b> " + place.title);
                 }
             });
         },
