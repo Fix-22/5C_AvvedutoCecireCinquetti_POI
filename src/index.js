@@ -69,6 +69,10 @@ fetch("./conf.json")
             fetchComponent.setData("poi", newData).then(msg => {
                 fetchComponent.getData("poi").then(data => {
                     remoteData = data;
+                    homeTable.setData(remoteData);
+                    homeTable.render();
+                    map.setPlaces(remoteData);
+                    map.render();
                     adminTable.setData(remoteData);
                     adminTable.render();
                     spinner.classList.add("d-none");
