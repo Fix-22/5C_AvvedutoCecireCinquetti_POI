@@ -21,7 +21,7 @@ ul.navbar-nav {
     place-items: center !important;
 }
 
-#searchDiv {
+#searchbarContainer {
     width: 60% !important;
     padding: 1% 0 1%;
     display: flex;

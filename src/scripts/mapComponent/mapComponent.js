@@ -1,7 +1,7 @@
 export const generateMap = (parentElement) => {
     let map;
     let places = [];
-    let zoom = 20;
+    let zoom = 5;
     return {
         build: (startCoords) => {
             map = L.map(parentElement).setView(startCoords, zoom);
