@@ -4,17 +4,18 @@ import {generateGeoencoder} from "./scripts/geoencoderComponent/geoencoderCompon
 import {generateMap} from "./scripts/mapComponent/mapComponent.js";
 import {generateHomeTable} from "./scripts/homeTableComponent/homeTableComponent.js";
 import {generateSearchbar} from "./scripts/searchBarComponent/searchBarComponent.js";
+import {generateLoginComponent} from "./scripts/loginComponent/loginComponent.js";
 import {generateAdminTable} from "./scripts/adminTableComponent/adminTableComponent.js";
 import { navBarComponent } from "./scripts/navbarComponent/navbarComponent.js";
 
 const modalBody = document.getElementById("modalBody");
-const loginContainer = document.getElementById("loginContainer");
 
 const spinner = document.getElementById("spinner");
 const pages = document.getElementById("pages");
 const mapContainer = document.getElementById("mapContainer");
 const homeTableContainer = document.getElementById("home-tab");
 const searchbarContainer = document.getElementById("searchbarContainer");
+const loginContainer = document.getElementById("loginContainer");
 const adminTableContainer = document.getElementById("adm-tab");
 const articleContainer = document.getElementById("article");
 
@@ -24,6 +25,7 @@ const geoencoder = generateGeoencoder();
 const map = generateMap(mapContainer);
 const homeTable = generateHomeTable(homeTableContainer);
 const searchbar = generateSearchbar(searchbarContainer);
+const loginComponent = generateLoginComponent(loginContainer);
 const adminTable = generateAdminTable(adminTableContainer);
 const navbar = navBarComponent(document.querySelector(".navbarContainer"));
 
@@ -57,8 +59,11 @@ fetch("./conf.json")
 
         searchbar.build("Insert play's title or place");
         searchbar.onsearch(data => console.log(data))
-        searchbar.oncancel(console.log("aiut"))
+        searchbar.oncancel(() => null)
         searchbar.render();
+
+        loginComponent.build(cacheToken, "private");
+        loginComponent.renderForm();
 
         adminTable.build(["Play's title", "Manage"], remoteData);
         adminTable.onelementedit(playTitle => {
