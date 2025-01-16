@@ -91,6 +91,10 @@ nav {
     z-index: 100000;
 }
 
+.modal {
+    z-index: 150000 !important;
+}
+
 #searchDiv {
     top: 87px !important;
 }
@@ -179,6 +183,13 @@ img {
 
 img:hover:not(#map) {
     transform: scale(1.1);
+}
+
+#spinner {
+    height: 100vh !important;
+    display: flex;
+    justify-content: center;
+    place-items: center;
 }
 
 @media (max-width: 768px) {
