@@ -54,8 +54,10 @@ export const generateHomeTable = (parentElement) => {
             });
             html += "</tr></thead><tbody>";
 
-            data.forEach(e => {
-                html += '<tr><td><a href="#article" id="' + e.title + '" class="articleLink">' + e.title + ' <i class="bi bi-box-arrow-up-right"></i></a></td><td>' + e.place.name + '</td></tr>';
+            let dataKeys = Object.keys(data);
+
+            dataKeys.forEach(e => {
+                html += '<tr><td><a href="#article" id="' + e + '" class="articleLink">' + e + ' <i class="bi bi-box-arrow-up-right"></i></a></td><td>' + data[e].place.name + '</td></tr>';
             });
 
             html += "</tbody></table>";
@@ -65,8 +67,9 @@ export const generateHomeTable = (parentElement) => {
 
             for (let i = 0; i < articleLinks.length; i++) {
                 let a = articleLinks[i];
+                
                 a.onclick = () => {
-                    let currentArticleData = data[i];
+                    let currentArticleData = data[dataKeys[i]];
                     articleContainer.innerHTML = articleTemplate.replaceAll("%PLAYTITLE", a.id).replace("%PLACE", currentArticleData.place.name).replace("%YEAROFPUB", currentArticleData.yearofpub).replace("%ERA", currentArticleData.era).replace("%RESUME", currentArticleData.resume).replace("%CHARACTERS", currentArticleData.characters).replace("%IMGLINK1", currentArticleData.images[0]).replace("%IMGLINK2", currentArticleData.images[1]).replace("%IMGLINK3", currentArticleData.images[2]);
                 };
             }
@@ -74,8 +77,10 @@ export const generateHomeTable = (parentElement) => {
         search: (input) => { // cerca nei dati le righe che contengono l'input (che può essere il titolo o il luogo dell'opera)
             let searchResults = []
             
-            data.forEach(e => {
-                if (e.place.name.toLowerCase().includes(input.toLowerCase()) || e.title.toLowerCase().includes(input.toLowerCase())) {
+            let dataKeys = Object.keys(data);
+
+            dataKeys.forEach(e => {
+                if (data[e].place.name.toLowerCase().includes(input.toLowerCase()) || e.toLowerCase().includes(input.toLowerCase())) {
                     searchResults.push(e)
                 }
             });
@@ -89,8 +94,10 @@ export const generateHomeTable = (parentElement) => {
             });
             html += "</tr></thead><tbody>";
 
-            newData.forEach(e => {
-                html += '<tr><td><a href="#article" id="' + e.title + '" class="articleLink">' + e.title + ' <i class="bi bi-box-arrow-up-right"></i></a></td><td>' + e.place.name + '</td></tr>';
+            let dataKeys = Object.keys(newData);
+
+            dataKeys.forEach(e => {
+                html += '<tr><td><a href="#article" id="' + e + '" class="articleLink">' + e + ' <i class="bi bi-box-arrow-up-right"></i></a></td><td>' + data[e].place.name + '</td></tr>';
             });
 
             html += "</tbody></table>";

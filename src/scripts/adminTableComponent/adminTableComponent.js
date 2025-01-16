@@ -22,8 +22,10 @@ export const generateAdminTable = (parentElement) => {
             });
             html += "</tr></thead><tbody>";
 
-            data.forEach(e => {
-                html += "<tr><td>" + e.title + '</td><td><button type="button" id="edit-' + e.title + '" class="btn btn-warning editButton" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="bi bi-pencil-square"></i> Edit</button> <button type="button" id="delete-' + e.title + '" class="btn btn-danger deleteButton"><i class="bi bi-trash"></i> Delete</button></td></tr>';
+            let dataKeys = Object.keys(data);
+
+            dataKeys.forEach(e => {
+                html += "<tr><td>" + e + '</td><td><button type="button" id="edit-' + e + '" class="btn btn-warning editButton" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="bi bi-pencil-square"></i> Edit</button> <button type="button" id="delete-' + e + '" class="btn btn-danger deleteButton"><i class="bi bi-trash"></i> Delete</button></td></tr>';
             });
 
             html += "</tbody></table>";
@@ -40,15 +42,7 @@ export const generateAdminTable = (parentElement) => {
                 b.onclick = () => {
                     const playTitle = b.id.replace("delete-", "");
                     
-                    let idx = 0;
-    
-                    for (let i = 0; i < data.length; i++) {
-                        if (data[i].title === playTitle) {
-                            idx = i;                        
-                            break;
-                        }
-                    }
-                    data.splice(idx, 1);
+                    delete data[playTitle];
                     
                     elementDeleteCallback(data);
                 };

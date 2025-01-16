@@ -1,6 +1,6 @@
 export const generateMap = (parentElement) => {
     let map;
-    let places = [];
+    let data = [];
     let zoom = 5;
     
     return {
@@ -12,25 +12,25 @@ export const generateMap = (parentElement) => {
             }).addTo(map);
         },
         render: () => {
-            places.forEach((place) => {
-                if (place) {
-                    const marker = L.marker(place.place.coords).addTo(map);
-                    marker.bindPopup("<b>" + place.place.name + "</b><br><b>Play:</b> " + place.title);
-                }
+            let dataKeys = Object.keys(data);
+
+            dataKeys.forEach(e => {
+                const marker = L.marker(data[e].place.coords).addTo(map);
+                marker.bindPopup("<b>" + data[e].place.name + "</b><br><b>Play:</b> " + e);
             });
         },
-        addPlace: (place) => {
-            if (places.indexOf(place) === -1) {
-                places.push(place);
+        addPlay: (title, inputData) => {
+            if (!data[title]) {
+                data[title] = inputData;
             }
         },
-        getPlaces: () => {
-            return places;
+        getData: () => {
+            return data;
         },
-        setPlaces: (inputPlaces) => {
-            places = inputPlaces;
+        setData: (inputData) => {
+            data = inputData;
         },
-        zoomToPlace: (coords,zoom) => {
+        zoomToPlace: (coords, zoom) => {
             map.flyTo(coords, zoom);
         }
     };

@@ -73,7 +73,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
         homeTable.render();
 
         map.build([41.896705, 12.482183]);
-        map.setPlaces(remoteData);
+        map.setData(remoteData);
         map.render();
 
         searchbar.build("Insert play's title or place");
@@ -99,7 +99,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
                     remoteData = data;
                     homeTable.setData(remoteData);
                     homeTable.render();
-                    map.setPlaces(remoteData);
+                    map.setData(remoteData);
                     map.render();
                     adminTable.setData(remoteData);
                     adminTable.render();
