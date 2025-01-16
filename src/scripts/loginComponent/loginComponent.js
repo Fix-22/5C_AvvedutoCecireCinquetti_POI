@@ -55,12 +55,14 @@ export const generateLoginComponent = (parentElement) => {
                             <input type="text" class="form-control" id="inputUsername" placeholder="Username">
                             <input type="password" class="form-control" id="inputPassword" placeholder="Password">
                             <button id="loginButton" type="button" class="btn btn-dark"><i class="bi bi-box-arrow-in-right"></i> Login</button>
+                            <div id="loginResult" class="form-text text-danger d-none">Incorrect username or password</div>
             </form>`;
             parentElement.innerHTML = html;
 
             document.getElementById("loginButton").onclick = () => {
                 const username = document.getElementById("inputUsername").value;
                 const password = document.getElementById("inputPassword").value;
+                const loginResult = document.getElementById("loginResult");
 
                 if (username && password) {
                     login(username, password)
@@ -78,9 +80,7 @@ export const generateLoginComponent = (parentElement) => {
 
                         } 
                         else {
-                            loginResultLabel.classList.add("text-danger") ;
-                            loginResultLabel.classList.remove("text-success") ;
-                            loginResultLabel.innerText = "Nome utente o password errati!" ;
+                            loginResult.classList.remove("d-none");
                         }
                     })
                     .catch(err => {
