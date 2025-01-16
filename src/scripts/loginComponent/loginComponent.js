@@ -2,6 +2,7 @@ export const generateLoginComponent = (parentElement) => {
     let token;
     let isLogged;
     let privateClass;
+    let loginCallback;
 
     const login = (username, password) => {
         return new Promise((resolve, reject) => {
@@ -80,6 +81,7 @@ export const generateLoginComponent = (parentElement) => {
                             
                             document.getElementById("inputUsername").value = "";
                             document.getElementById("inputPassword").value = "";
+                            loginCallback();
                         } 
                         else {
                             loginResult.classList.remove("d-none");
@@ -95,6 +97,9 @@ export const generateLoginComponent = (parentElement) => {
         },
         isLogged: () => {
             return isLogged;
+        },
+        setCallback: (cbk) => {
+            loginCallback = cbk;
         }
     };
 };

@@ -28,9 +28,29 @@ const loginComponent = generateLoginComponent(loginContainer);
 const adminTable = generateAdminTable(adminTableContainer);
 const navbar = navBarComponent(document.querySelector(".navbarContainer"));
 
-fetch("./conf.json")
-.then(r => r.json())    
-.then(data => {
+fetch("./conf.json").then(r => r.json()).then(data => {
+    const navbarEl = [
+        [
+            '<button type="button" class="btn btn-light" id="searchButton"><i class="bi bi-search"></i> Search</button>',
+            '<a href="#home"><img src="/src/assets/logo.png" class="logo navbar-brand"></a>',
+            '<a href="#admin"><button type="button" class="btn btn-dark"><i class="bi bi-gear"></i> Administration</button></a>'
+        ],
+        [
+            '<a href="#home"><button type="button" class="btn btn-light" id="searchButton"><img src="/src/assets/home.png" alt="home"></button></a>',
+            '<a href="#home"><img src="/src/assets/logo.png" class="logo navbar-brand"></a>',
+            '<a href="#admin"><button type="button" class="btn btn-dark"><i class="bi bi-gear"></i> Administration</button></a>'
+        ],
+        [
+            '<a href="#home"><button type="button" class="btn btn-light" id="searchButton"><img src="/src/assets/home.png" alt="home"></button></a>',
+            '<img src="/src/assets/logo.png" class="logo navbar-brand">',
+        ],
+        [
+            '<button type="button" class="btn btn-light" id="searchButton"><i class="bi bi-search"></i> Search</button>',
+            '<a href="#home"><img src="/src/assets/logo.png" class="logo navbar-brand"></a>',
+            '<button type="button" class="btn btn-dark" id="searchButton" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="bi bi-file-earmark-plus"></i> Add an article</button>'
+        ]
+    ];
+
     let cacheToken = data["cacheToken"];
     let mapsToken = data["mapsToken"];
 
@@ -62,6 +82,10 @@ fetch("./conf.json")
         searchbar.render();
 
         loginComponent.build(cacheToken, "private");
+        loginComponent.setCallback(()=> {
+            navbar.build(navbarEl[3]);
+            navbar.render();
+        });
         loginComponent.renderForm();
 
         adminTable.build(["Play's title", "Manage"], remoteData);
@@ -86,5 +110,17 @@ fetch("./conf.json")
         adminTable.render();
 
         spinner.classList.add("d-none");
+        window.addEventListener("popstate", () => {
+            console.log("dentro")
+            const url = new URL(document.location.href);
+            let nav;
+            if(!url.hash || url.hash === "#home") nav = navbarEl[0];
+            else if (url.hash === "article") nav = navbarEl[1];
+            else if(url.hash === "#admin" && !loginComponent.isLogged()) nav = navbarEl[2];
+            else if(url.hash === "#admin" && loginComponent.isLogged()) nav = navbarEl[3];
+            navbar.build(nav);
+            navbar.render();
+            console.log(url.hash);
+        });
     });
 });
