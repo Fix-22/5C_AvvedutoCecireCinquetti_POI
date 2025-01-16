@@ -8,8 +8,6 @@ import {generateLoginComponent} from "./scripts/loginComponent/loginComponent.js
 import {generateAdminTable} from "./scripts/adminTableComponent/adminTableComponent.js";
 import { navBarComponent } from "./scripts/navbarComponent/navbarComponent.js";
 
-const modalBody = document.getElementById("modalBody");
-
 const spinner = document.getElementById("spinner");
 const pages = document.getElementById("pages");
 const mapContainer = document.getElementById("mapContainer");
@@ -17,6 +15,7 @@ const homeTableContainer = document.getElementById("home-tab");
 const searchbarContainer = document.getElementById("searchbarContainer");
 const loginContainer = document.getElementById("loginContainer");
 const adminTableContainer = document.getElementById("adm-tab");
+const modalBody = document.getElementById("modalBody");
 const articleContainer = document.getElementById("article");
 
 generateNavigator(pages);
