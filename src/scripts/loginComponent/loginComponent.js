@@ -77,10 +77,14 @@ export const generateLoginComponent = (parentElement) => {
                                 e.classList.remove("d-none");
                             });
                             parentElement.classList.add("d-none");
-
+                            
+                            document.getElementById("inputUsername").value = "";
+                            document.getElementById("inputPassword").value = "";
                         } 
                         else {
                             loginResult.classList.remove("d-none");
+                            document.getElementById("inputUsername").value = "";
+                            document.getElementById("inputPassword").value = "";
                         }
                     })
                     .catch(err => {
