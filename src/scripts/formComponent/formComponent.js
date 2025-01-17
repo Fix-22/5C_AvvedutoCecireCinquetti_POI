@@ -74,10 +74,10 @@ export const generateForm = (parentElement) => {
 
             document.querySelectorAll(".clearForm").forEach(b => {
                 b.onclick = () => {
-                    document.getElementById("adminFormTitle").innerText = "Add article";
-
                     if (b.id === "submitButton") {
                         if (workTitleInput.value && textInput.value && playMainLink.value && playSecondLink.value && playThirdLink.value && playLocation.value && playCharacters.value && playPubblicationYear.value && playEra.value) {
+                            document.getElementById("adminFormTitle").innerText = "Add article";
+
                             if (playMainLink.value && newImages.indexOf(playMainLink.value) === -1) newImages.push(playMainLink.value)
                             if (playSecondLink.value && newImages.indexOf(playSecondLink.value) === -1) newImages.push(playSecondLink.value)
                             if (playThirdLink.value && newImages.indexOf(playThirdLink.value) === -1) newImages.push(playThirdLink.value)
@@ -102,6 +102,7 @@ export const generateForm = (parentElement) => {
                         }
                     }
                     else {
+                        document.getElementById("adminFormTitle").innerText = "Add article";
                         workTitleInput.value = "" ;
                         textInput.value = "" ;
                         playMainLink.value = "" ;
