@@ -7,6 +7,7 @@ import {generateSearchbar} from "./scripts/searchBarComponent/searchBarComponent
 import {generateLoginComponent} from "./scripts/loginComponent/loginComponent.js";
 import {generateAdminTable} from "./scripts/adminTableComponent/adminTableComponent.js";
 import { navBarComponent } from "./scripts/navbarComponent/navbarComponent.js";
+import { generateForm } from "./scripts/formComponent/formComponent.js";
 
 const spinner = document.getElementById("spinner");
 const pages = document.getElementById("pages");
@@ -27,6 +28,7 @@ const searchbar = generateSearchbar(searchbarContainer);
 const loginComponent = generateLoginComponent(loginContainer);
 const adminTable = generateAdminTable(adminTableContainer);
 const navbar = navBarComponent(document.querySelector(".navbarContainer"));
+const adminForm = generateForm(modalBody);
 
 fetch("./conf.json").then(r => r.json()).then(data => {
     const navbarEl = [
@@ -36,18 +38,18 @@ fetch("./conf.json").then(r => r.json()).then(data => {
             '<a href="#admin"><button type="button" class="btn btn-dark"><i class="bi bi-gear"></i> Administration</button></a>'
         ],
         [
-            '<a href="#home"><img src="/src/assets/home.png" alt="home"></button></a>',
+            '<a href="#home"><img src="/src/assets/home.png" alt="home"></a>',
             '<a href="#home"><img src="/src/assets/logo.png" class="logo navbar-brand"></a>',
             '<a href="#admin"><button type="button" class="btn btn-dark"><i class="bi bi-gear"></i> Administration</button></a>'
         ],
         [
-            '<a href="#home"><img src="/src/assets/home.png" alt="home"></button></a>',
+            '<a href="#home"><img src="/src/assets/home.png" alt="home"></a>',
             '<img src="/src/assets/logo.png" class="logo navbar-brand">',
         ],
         [
-            '<a href="#home"><img src="/src/assets/home.png" alt="home"></button></a>',
+            '<a href="#home"><img src="/src/assets/home.png" alt="home"></a>',
             '<a href="#home"><img src="/src/assets/logo.png" class="logo navbar-brand"></a>',
-            '<button type="button" class="btn btn-dark" id="searchButton" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="bi bi-file-earmark-plus"></i> Add an article</button>'
+            '<button type="button" class="btn btn-dark" id="addArticleButton" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="bi bi-file-earmark-plus"></i> Add an article</button>'
         ]
     ];
 
@@ -94,7 +96,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
 
         adminTable.build(["Play's title", "Manage"], remoteData);
         adminTable.onelementedit(playTitle => {
-            // CODICE PER AGGIUNGERE TESTO AL FORM
+            adminForm.setInputsValue(playTitle, remoteData[playTitle]);
         });
         adminTable.onelementdelete(newData => {
             spinner.classList.remove("d-none");
@@ -113,9 +115,30 @@ fetch("./conf.json").then(r => r.json()).then(data => {
         });
         adminTable.render();
 
+        adminForm.onsubmit((title, article) => {
+            geoencoder.encode(article.place.name).then(data => {
+                article.place.coords = data.coords;
+                remoteData[title] = article;
+                
+                spinner.classList.remove("d-none");
+                fetchComponent.setData("poi", remoteData).then(msg => {
+                    fetchComponent.getData("poi").then(data => {
+                        remoteData = data;
+                        homeTable.setData(remoteData);
+                        homeTable.render();
+                        map.setData(remoteData);
+                        map.render();
+                        adminTable.setData(remoteData);
+                        adminTable.render();
+                        spinner.classList.add("d-none");
+                    });
+                });
+            });
+        });
+        adminForm.render();
+
         spinner.classList.add("d-none");
         window.addEventListener("popstate", () => {
-            console.log("dentro")
             const url = new URL(document.location.href);
             let nav;
             if(!url.hash || url.hash === "#home") nav = navbarEl[0];
@@ -124,7 +147,6 @@ fetch("./conf.json").then(r => r.json()).then(data => {
             else if(url.hash === "#admin" && loginComponent.isLogged()) nav = navbarEl[3];
             navbar.build(nav);
             navbar.render();
-            console.log(url.hash + "\n" + nav);
         });
     });
 });

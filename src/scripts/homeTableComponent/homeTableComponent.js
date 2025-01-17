@@ -75,13 +75,13 @@ export const generateHomeTable = (parentElement) => {
             }
         },
         search: (input) => { // cerca nei dati le righe che contengono l'input (che può essere il titolo o il luogo dell'opera)
-            let searchResults = []
+            let searchResults = {};
             
             let dataKeys = Object.keys(data);
 
             dataKeys.forEach(e => {
                 if (data[e].place.name.toLowerCase().includes(input.toLowerCase()) || e.toLowerCase().includes(input.toLowerCase())) {
-                    searchResults.push(e)
+                    searchResults[e] = data[e];
                 }
             });
             return searchResults;
