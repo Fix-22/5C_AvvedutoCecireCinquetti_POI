@@ -119,6 +119,8 @@ fetch("./conf.json").then(r => r.json()).then(data => {
 
         adminForm.onsubmit((title, article) => {
             geoencoder.encode(article.place.name).then(data => {
+                console.log(data);
+                
                 article.place.coords = data.coords;
                 remoteData[title] = article;
                 modal.hide();
@@ -136,6 +138,10 @@ fetch("./conf.json").then(r => r.json()).then(data => {
                         spinner.classList.add("d-none");
                     });
                 });
+            })
+            .catch(err => {
+                console.log(err)
+                adminForm.setError("Invalid location")
             });
         });
         adminForm.render();

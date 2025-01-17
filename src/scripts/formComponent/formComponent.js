@@ -53,10 +53,12 @@ export const generateForm = (parentElement) => {
                             placeholder="Third image link"
                             id="playThirdLink">
                     </div>
+                    <div id="resultLabel" class="form-text text-danger text-center"></div>
                 </div>
             </form>
                             ` ;
             parentElement.innerHTML = html ;
+            document.getElementById("adminFormTitle").innerText = "Add article";
 
             let workTitleInput = document.getElementById("workTitleInput") ;
             let textInput = document.getElementById("textInput") ;
@@ -67,10 +69,13 @@ export const generateForm = (parentElement) => {
             let playPubblicationYear = document.getElementById("playPubblicationYear") ;
             let playEra = document.getElementById("playEra") ;
             let playThirdLink = document.getElementById("playThirdLink") ;
+            let resultLabel = document.getElementById("resultLabel");
             let newImages = [] ;
 
             document.querySelectorAll(".clearForm").forEach(b => {
                 b.onclick = () => {
+                    document.getElementById("adminFormTitle").innerText = "Add article";
+
                     if (b.id === "submitButton") {
                         if (workTitleInput.value && textInput.value && playMainLink.value && playSecondLink.value && playThirdLink.value && playLocation.value && playCharacters.value && playPubblicationYear.value && playEra.value) {
                             if (playMainLink.value && newImages.indexOf(playMainLink.value) === -1) newImages.push(playMainLink.value)
@@ -91,7 +96,10 @@ export const generateForm = (parentElement) => {
                             newImages = [];
                             
                             callback(title, article);
-                        }    
+                        }
+                        else {
+                            resultLabel.innerText = "Not all forms compiled";
+                        }
                     }
                     else {
                         workTitleInput.value = "" ;
@@ -103,6 +111,7 @@ export const generateForm = (parentElement) => {
                         playCharacters.value = "" ;
                         playPubblicationYear.value = "" ;
                         playEra.value = "" ;
+                        resultLabel.innerText = "";
                     }
                 };
             })
@@ -120,6 +129,7 @@ export const generateForm = (parentElement) => {
             if (articleDictionary.era) document.getElementById("playEra").value = articleDictionary.era ;
         },
         clear: () => {
+            document.getElementById("adminFormTitle").innerText = "Add article";
             document.getElementById("workTitleInput").value = "" ;
             document.getElementById("textInput").value = "" ;
             document.getElementById("playMainLink").value = "" ;
