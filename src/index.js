@@ -77,8 +77,12 @@ fetch("./conf.json").then(r => r.json()).then(data => {
         map.render();
 
         searchbar.build("Insert play's title or place");
-        searchbar.onsearch(data => console.log(data))
-        searchbar.oncancel(() => null)
+        searchbar.onsearch(data => {
+            homeTable.renderFilter(homeTable.search(data));
+        });
+        searchbar.oncancel(() => {
+            homeTable.render();
+        });
         searchbar.render();
 
         loginComponent.build(cacheToken, "private");
