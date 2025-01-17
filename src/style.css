@@ -193,6 +193,10 @@ img:hover:not(#map) {
 }
 
 @media (max-width: 768px) {
+    .content {
+        font-size: smaller;
+    }
+
     #adm-tab {
         height: 70vh !important;
         margin: 15% 0 !important;
