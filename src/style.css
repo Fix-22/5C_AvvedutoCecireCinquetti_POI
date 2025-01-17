@@ -85,10 +85,10 @@ div.container-fluid,.navbar {
     width: 300%;
 }
 
-nav {
+nav, .navbarContainer {
     position: sticky !important;
     top: 0 !important;
-    z-index: 100000;
+    z-index: 100000 !important;
 }
 
 .modal {
