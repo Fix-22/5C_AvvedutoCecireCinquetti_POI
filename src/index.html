@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css" type="text/css" />
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
     <link href="./style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
     <title>Home | POI - Shakespeare's Places</title>
     <style>
-        #mapContainer { width: 600px; height: 300px; border-radius: 10px;}
-    </style> 
+        #mapContainer {
+            width: 600px;
+            height: 300px;
+            border-radius: 10px;
+        }
+    </style>
 </head>
+
 <body>
     <div class="navbarContainer"></div>
     <div id="pages">
@@ -33,30 +40,30 @@
                     <p class="topic">Home | POI - Shakespeare's Places</p>
                     <h1>Home</h1>
                     <p class="content">
-                        Realizzato da tre studenti di quinta superiore, POI (Point Of Interest), è un 
-                        portale interattivo che collega le opere di Shakespeare ai luoghi del mondo 
-                        reale. <br> La mappa permette di scoprire dettagli 
-                        storici, curiosità e analisi su ogni ambientazione. Ogni punto di interesse è arricchito 
-                        da contenuti testuali e visivi per rendere l'esplorazione delle opere più coinvolgente 
-                        e intuitiva. 
+                        Created by three high school students, POI (Point Of Interest) is an interactive platform that
+                        connects Shakespeare's works to real-world locations.
+                        The map allows users to discover historical details and analyses about each setting.
+                        Every point of interest includes textual and visual content, making the exploration of
+                        the plays more interesting and intuitive.
                     </p>
                 </div>
                 <div class="row" id="summary-end">
                     <div class="col">
-                        <p>Luca Avveduto, Simone Cecire, Simone Cinquetti</p><p>10/01/2025</p>
+                        <p>Luca Avveduto, Simone Cecire, Simone Cinquetti</p>
+                        <p>10/01/2025</p>
                     </div>
                 </div>
                 <div class="row d-flex justify-content-center">
                     <div class="short-line"></div>
-                </div>                
+                </div>
                 <div class="container main-content">
                     <div class="row">
                         <div class="col-12 col-md-6 places-table" id="home-tab"></div>
                         <div class="col-12 col-md-6" id="mapContainer">
-                            
+
                         </div>
                     </div>
-                </div>        
+                </div>
             </div>
         </div>
         <div id="admin" class="page">
@@ -73,7 +80,8 @@
                 </div>
                 <div id="adm-tab"></div>
             </div>
-            <div class="modal fade" id="modalForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal fade" id="modalForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -85,8 +93,10 @@
                         </div>
                         <div class="modal-body" id="modalBody"></div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger clearForm" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cancel</button>
-                            <button type="button" class="btn btn-dark clearForm" id="submitButton"><i class="bi bi-floppy"></i> Save</button>
+                            <button type="button" class="btn btn-danger clearForm" data-bs-dismiss="modal"><i
+                                    class="bi bi-x-circle"></i> Cancel</button>
+                            <button type="button" class="btn btn-dark clearForm" id="submitButton"><i
+                                    class="bi bi-floppy"></i> Save</button>
                         </div>
                     </div>
                 </div>
@@ -95,7 +105,9 @@
         <div id="article" class="page"></div>
     </div>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script type="module" src="index.js"></script>
 </body>
+
 </html>

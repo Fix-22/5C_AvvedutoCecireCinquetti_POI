@@ -44,7 +44,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
         ],
         [
             '<a href="#home"><img src="/src/assets/home.png" alt="home"></a>',
-            '<img src="/src/assets/logo.png" class="logo navbar-brand">',
+            '<a href="#home"><img src="/src/assets/logo.png" class="logo navbar-brand"></a>',
         ],
         [
             '<a href="#home"><img src="/src/assets/home.png" alt="home"></a>',
