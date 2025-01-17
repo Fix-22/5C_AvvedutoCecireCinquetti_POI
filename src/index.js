@@ -53,6 +53,8 @@ fetch("./conf.json").then(r => r.json()).then(data => {
         ]
     ];
 
+    const modal = new bootstrap.Modal(document.getElementById("modalForm")); // per gestire modal via js
+
     let cacheToken = data["cacheToken"];
     let mapsToken = data["mapsToken"];
 
@@ -119,6 +121,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
             geoencoder.encode(article.place.name).then(data => {
                 article.place.coords = data.coords;
                 remoteData[title] = article;
+                modal.hide();
                 
                 spinner.classList.remove("d-none");
                 fetchComponent.setData("poi", remoteData).then(msg => {
