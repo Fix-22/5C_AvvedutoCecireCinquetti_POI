@@ -17,6 +17,12 @@ export const generateSearchbar = (parentElement) => {
 
             parentElement.innerHTML = HTML;
 
+            document.getElementById("searchText").oninput = () => {
+                if(document.getElementById("searchText").value === ""){
+                    cancelCallback();
+                }
+            }
+
             parentElement.addEventListener("keypress", function(event) {
                 if (event.key === "Enter") {
                     let searchText = document.getElementById("searchText").value;
