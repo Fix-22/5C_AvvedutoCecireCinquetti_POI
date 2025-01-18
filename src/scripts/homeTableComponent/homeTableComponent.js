@@ -45,6 +45,10 @@ export const generateHomeTable = function(parentElement,pubsub)  {
             header = inputHeader;
             data = inputData;
             articleContainer = inputArticleContainer;
+            pubsub.subscribe("el-deleted",(remoteData)=>{
+                this.setData(remoteData)
+                this.render()
+            })
             pubsub.subscribe("cancel",()=>{this.render()})
             pubsub.subscribe("search",(input)=>{
                 console.log(input)

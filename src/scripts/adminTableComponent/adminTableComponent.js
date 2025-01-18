@@ -1,12 +1,16 @@
-export const generateAdminTable = (parentElement) => {
+export const generateAdminTable = (parentElement,pubsub) => {
     let header = [];
     let data = [];
     let elementDeleteCallback, elementEditCallback;
 
-    return {
-        build: (inputHeader, inputData) => {
+    const dict ={
+        build: function(inputHeader, inputData) {
             header = inputHeader;
             data = inputData;
+            pubsub.subscribe("el-deleted",(remoteData)=>{
+                this.setData(remoteData);
+                this.render();
+            })
         },
         onelementedit: (inputElementEditCallback) => {
             elementEditCallback = inputElementEditCallback;
@@ -14,7 +18,7 @@ export const generateAdminTable = (parentElement) => {
         onelementdelete: (inputElementDeleteCallback) => {
             elementDeleteCallback = inputElementDeleteCallback;
         },
-        render: () => {
+        render: function() {
             let html = '<table class="table table-focus table-striped"><thead class="sticky-on-top"><tr>';
             
             header.forEach(e => {
@@ -48,11 +52,12 @@ export const generateAdminTable = (parentElement) => {
                 };
             });
         },
-        setData: (inputData) => {
+        setData: function(inputData) {
             data = inputData;
         },
-        getData: () => {
+        getData: function() {
             return data;
         }
     }
+    return dict
 };

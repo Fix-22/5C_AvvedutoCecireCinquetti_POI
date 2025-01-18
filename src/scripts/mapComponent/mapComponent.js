@@ -19,6 +19,10 @@ export const generateMap = function (parentElement,pubsub) {
                 let filterDataKeys = Object.keys(dat);
                 this.zoomToPlace(dat[filterDataKeys[0]].place.coords, 12);
             })
+            pubsub.subscribe("el-deleted",(remoteData)=>{
+                this.setData(remoteData);
+                this.render();
+            })
         },
         render: function() {
             let dataKeys = Object.keys(data);

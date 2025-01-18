@@ -28,9 +28,9 @@ const map = generateMap(mapContainer,pubsub);
 const homeTable = generateHomeTable(homeTableContainer,pubsub);
 const searchbar = generateSearchbar(searchbarContainer,pubsub);
 const loginComponent = generateLoginComponent(loginContainer,pubsub);
-const adminTable = generateAdminTable(adminTableContainer);
+const adminTable = generateAdminTable(adminTableContainer,pubsub);
 const navbar = generateNavBarComponent(document.querySelector(".navbarContainer"),pubsub);
-const adminForm = generateForm(modalBody);
+const adminForm = generateForm(modalBody,pubsub);
 
 fetch("./conf.json").then(r => r.json()).then(data => {
     const navbarEl = [
@@ -87,7 +87,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
         searchbar.render();
 
         loginComponent.build(cacheToken, "private");
-        
+
         loginComponent.renderForm();
         let focused;
         adminTable.build(["Play's title", "Manage"], remoteData);
@@ -100,12 +100,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
             fetchComponent.setData("poi", newData).then(msg => {
                 fetchComponent.getData("poi").then(data => {
                     remoteData = data;
-                    homeTable.setData(remoteData);
-                    homeTable.render();
-                    map.setData(remoteData);
-                    map.render();
-                    adminTable.setData(remoteData);
-                    adminTable.render();
+                    pubsub.publish("el-deleted",remoteData)
                     spinner.classList.add("d-none");
                 });
             });
