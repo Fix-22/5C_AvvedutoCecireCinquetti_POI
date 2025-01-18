@@ -27,9 +27,9 @@ const geoencoder = generateGeoencoder();
 const map = generateMap(mapContainer,pubsub);
 const homeTable = generateHomeTable(homeTableContainer,pubsub);
 const searchbar = generateSearchbar(searchbarContainer,pubsub);
-const loginComponent = generateLoginComponent(loginContainer);
+const loginComponent = generateLoginComponent(loginContainer,pubsub);
 const adminTable = generateAdminTable(adminTableContainer);
-const navbar = generateNavBarComponent(document.querySelector(".navbarContainer"));
+const navbar = generateNavBarComponent(document.querySelector(".navbarContainer"),pubsub);
 const adminForm = generateForm(modalBody);
 
 fetch("./conf.json").then(r => r.json()).then(data => {
@@ -87,10 +87,12 @@ fetch("./conf.json").then(r => r.json()).then(data => {
         searchbar.render();
 
         loginComponent.build(cacheToken, "private");
+        /*
         loginComponent.setCallback(()=> {
             navbar.build(navbarEl[3]);
             navbar.render();
         });
+        */
         loginComponent.renderForm();
         let focused;
         adminTable.build(["Play's title", "Manage"], remoteData);

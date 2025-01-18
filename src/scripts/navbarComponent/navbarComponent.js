@@ -1,10 +1,18 @@
-export function generateNavBarComponent(parentElement) {
+export function generateNavBarComponent(parentElement,pubsub) {
     let elements;
-    return {
-        build: (list) => {
+    const dict ={
+        build: function(list) {
           elements = list;
+          pubsub.subscribe("login",()=>{
+            this.build([
+                '<a href="#home"><img src="/src/assets/home.png" alt="home"></a>',
+                '<a href="#home"><img src="/src/assets/logo.png" class="logo navbar-brand"></a>',
+                '<button type="button" class="btn btn-dark" id="addArticleButton" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="bi bi-file-earmark-plus"></i> Add an article</button>'
+            ]);
+            this.render();
+          })
         },
-        render: () => {
+        render: function() {
             let item = 
             ` <li class="nav-item">
                 %item
@@ -35,4 +43,5 @@ export function generateNavBarComponent(parentElement) {
             }
         }
     }
+    return dict;
 }
