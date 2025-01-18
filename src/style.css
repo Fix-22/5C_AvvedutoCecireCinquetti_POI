@@ -134,7 +134,7 @@ a {
 }
 
 #adm-tab {
-    max-height:60vh;
+    height:60vh !important;
     overflow-y: scroll;
     margin-left: 2%;
     margin-top: 3%;
