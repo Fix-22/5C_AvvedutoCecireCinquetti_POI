@@ -3,9 +3,14 @@
     max-height: 500px;
 }
 
+#searchbarContainer {
+    position: sticky !important;
+    top: 100px !important;
+}
+
 .places-table {
-    max-height: 60vh;
-    overflow-y: auto;
+    height: 35vh !important;
+    overflow-y: scroll !important;
 }
 
 #map {
@@ -203,8 +208,18 @@ img:hover:not(#map) {
         overflow-y: scroll !important;
     }
     .places-table {
-        max-height:30vh;
+        height: 30vh !important;
+        overflow-y: scroll !important;
         margin-bottom: 10%;
+    }
+
+    #adm-tab {
+        height: 60vh !important;
+        overflow-y: scroll !important;
+    }
+
+    #searchbarContainer {
+        top: 130px !important;
     }
 
     .logo {
