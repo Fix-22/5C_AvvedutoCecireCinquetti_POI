@@ -6,6 +6,7 @@
 #searchbarContainer {
     position: sticky !important;
     top: 100px !important;
+    z-index : 100000;
 }
 
 .places-table {

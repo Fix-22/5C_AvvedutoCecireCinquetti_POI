@@ -6,9 +6,6 @@ export const generateSearchbar = (parentElement,pubsub) => {
         build: (inputPlaceholder) => {
             placeholder = inputPlaceholder;
         },
-        onsearch: (inputSearchCallback) => {
-            searchCallback = inputSearchCallback;
-        },
         render: () => {
             let HTML = '<input type="search" class="form-control" placeholder="' + placeholder + '" id="searchText">'
 
@@ -25,7 +22,7 @@ export const generateSearchbar = (parentElement,pubsub) => {
                     let searchText = document.getElementById("searchText").value;
                 
                     if (searchText) {
-                        searchCallback(searchText);
+                        pubsub.publish("search",searchText)
                     }
                     else {
                         pubsub.publish("cancel")

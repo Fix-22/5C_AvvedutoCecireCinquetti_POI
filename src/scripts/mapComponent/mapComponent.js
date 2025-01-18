@@ -15,6 +15,10 @@ export const generateMap = function (parentElement,pubsub) {
             }).addTo(map);
             markers = L.layerGroup().addTo(map);
             pubsub.subscribe("cancel",()=>{this.resetZoom()})
+            pubsub.subscribe("zoomToPlace",(dat)=>{
+                let filterDataKeys = Object.keys(dat);
+                this.zoomToPlace(dat[filterDataKeys[0]].place.coords, 12);
+            })
         },
         render: function() {
             let dataKeys = Object.keys(data);

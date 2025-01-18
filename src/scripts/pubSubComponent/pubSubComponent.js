@@ -8,8 +8,8 @@ export const generatePubSub = () => {
             }
             events[eventName].push(callback);
         },
-        publish: (eventName) => {
-            events[eventName].forEach(callback => callback());
-        }
+        publish: (eventName,data) => {
+            events[eventName].forEach(callback => callback(data));
+        },
     };
 };

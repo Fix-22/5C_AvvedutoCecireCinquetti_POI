@@ -46,6 +46,15 @@ export const generateHomeTable = function(parentElement,pubsub)  {
             data = inputData;
             articleContainer = inputArticleContainer;
             pubsub.subscribe("cancel",()=>{this.render()})
+            pubsub.subscribe("search",(input)=>{
+                console.log(input)
+                let filterData = this.search(input);
+                let filterDataKeys = Object.keys(filterData);
+                this.renderFilter(filterData);
+                if (filterDataKeys.length === 1) {
+                    pubsub.publish("zoomToPlace",filterData);
+                }
+            })
         },
         render: function() {
             let html = '<table class="table table-focus table-striped"><thead class="sticky-on-top"><tr>';

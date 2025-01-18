@@ -83,16 +83,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
         map.render();
 
         searchbar.build("Insert play's title or place");
-        searchbar.onsearch(data => {
-            let filterData = homeTable.search(data);
-            let filterDataKeys = Object.keys(filterData);
-            homeTable.renderFilter(filterData);
 
-            if (filterDataKeys.length === 1) {
-                map.zoomToPlace(filterData[filterDataKeys[0]].place.coords, 12);
-            }
-        });
-        
         searchbar.render();
 
         loginComponent.build(cacheToken, "private");
