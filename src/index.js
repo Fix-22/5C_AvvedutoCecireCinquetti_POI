@@ -6,8 +6,9 @@ import {generateHomeTable} from "./scripts/homeTableComponent/homeTableComponent
 import {generateSearchbar} from "./scripts/searchBarComponent/searchBarComponent.js";
 import {generateLoginComponent} from "./scripts/loginComponent/loginComponent.js";
 import {generateAdminTable} from "./scripts/adminTableComponent/adminTableComponent.js";
-import { navBarComponent } from "./scripts/navbarComponent/navbarComponent.js";
-import { generateForm } from "./scripts/formComponent/formComponent.js";
+import {generateNavBarComponent} from "./scripts/navbarComponent/navbarComponent.js";
+import {generateForm} from "./scripts/formComponent/formComponent.js";
+import {generatePubSub} from "./scripts/pubSubComponent/pubSubComponent.js";
 
 const spinner = document.getElementById("spinner");
 const pages = document.getElementById("pages");
@@ -20,6 +21,7 @@ const modalBody = document.getElementById("modalBody");
 const articleContainer = document.getElementById("article");
 
 generateNavigator(pages);
+const pubsub = generatePubSub();
 const fetchComponent = generateFetchComponent();
 const geoencoder = generateGeoencoder();
 const map = generateMap(mapContainer);
@@ -27,7 +29,7 @@ const homeTable = generateHomeTable(homeTableContainer);
 const searchbar = generateSearchbar(searchbarContainer);
 const loginComponent = generateLoginComponent(loginContainer);
 const adminTable = generateAdminTable(adminTableContainer);
-const navbar = navBarComponent(document.querySelector(".navbarContainer"));
+const navbar = generateNavBarComponent(document.querySelector(".navbarContainer"));
 const adminForm = generateForm(modalBody);
 
 fetch("./conf.json").then(r => r.json()).then(data => {

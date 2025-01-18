@@ -197,6 +197,12 @@ img:hover:not(#map) {
     place-items: center;
 }
 
+#mapContainer {
+    width: 600px;
+    height: 300px;
+    border-radius: 10px;
+}
+
 @media (max-width: 768px) {
     .content {
         font-size: smaller;

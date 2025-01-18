@@ -1,4 +1,4 @@
-export function navBarComponent(parentElement) {
+export function generateNavBarComponent(parentElement) {
     let elements;
     return {
         build: (list) => {
