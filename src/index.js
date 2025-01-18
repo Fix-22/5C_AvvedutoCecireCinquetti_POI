@@ -119,12 +119,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
                 fetchComponent.setData("poi", remoteData).then(msg => {
                     fetchComponent.getData("poi").then(data => {
                         remoteData = data;
-                        homeTable.setData(remoteData);
-                        homeTable.render();
-                        map.setData(remoteData);
-                        map.render();
-                        adminTable.setData(remoteData);
-                        adminTable.render();
+                        pubsub.publish("form-submit",remoteData)
                         spinner.classList.add("d-none");
                     });
                 });

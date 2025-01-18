@@ -11,6 +11,10 @@ export const generateAdminTable = (parentElement,pubsub) => {
                 this.setData(remoteData);
                 this.render();
             })
+            pubsub.subscribe("form-submit",(remoteData)=>{
+                this.setData(remoteData);
+                this.render();
+            })
         },
         onelementedit: (inputElementEditCallback) => {
             elementEditCallback = inputElementEditCallback;

@@ -23,6 +23,10 @@ export const generateMap = function (parentElement,pubsub) {
                 this.setData(remoteData);
                 this.render();
             })
+            pubsub.subscribe("form-submit",(remoteData)=>{
+                this.setData(remoteData);
+                this.render();
+            })
         },
         render: function() {
             let dataKeys = Object.keys(data);

@@ -49,6 +49,10 @@ export const generateHomeTable = function(parentElement,pubsub)  {
                 this.setData(remoteData)
                 this.render()
             })
+            pubsub.subscribe("form-submit",(remoteData)=>{
+                this.setData(remoteData);
+                this.render();
+            })
             pubsub.subscribe("cancel",()=>{this.render()})
             pubsub.subscribe("search",(input)=>{
                 console.log(input)
