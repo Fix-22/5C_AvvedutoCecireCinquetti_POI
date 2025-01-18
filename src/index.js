@@ -95,9 +95,10 @@ fetch("./conf.json").then(r => r.json()).then(data => {
             navbar.render();
         });
         loginComponent.renderForm();
-
+        let focused;
         adminTable.build(["Play's title", "Manage"], remoteData);
         adminTable.onelementedit(playTitle => {
+            focused = playTitle;
             adminForm.setInputsValue(playTitle, remoteData[playTitle]);
         });
         adminTable.onelementdelete(newData => {
@@ -119,9 +120,8 @@ fetch("./conf.json").then(r => r.json()).then(data => {
 
         adminForm.onsubmit((title, article) => {
             geoencoder.encode(article.place.name).then(data => {
-                console.log(data);
-                
                 article.place.coords = data.coords;
+                if (!remoteData[title]) delete remoteData[focused];
                 remoteData[title] = article;
                 modal.hide();
                 
