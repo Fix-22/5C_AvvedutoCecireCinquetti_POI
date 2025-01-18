@@ -87,12 +87,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
         searchbar.render();
 
         loginComponent.build(cacheToken, "private");
-        /*
-        loginComponent.setCallback(()=> {
-            navbar.build(navbarEl[3]);
-            navbar.render();
-        });
-        */
+        
         loginComponent.renderForm();
         let focused;
         adminTable.build(["Play's title", "Manage"], remoteData);
