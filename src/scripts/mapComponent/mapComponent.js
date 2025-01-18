@@ -1,12 +1,11 @@
-export const generateMap = (parentElement) => {
+export const generateMap = function (parentElement,pubsub) {
     let map;
     let data = [];
     let zoom;
     let markers;
     let startCoords;
-    
-    return {
-        build: (inputStartCoords) => {
+    const dict={
+        build: function(inputStartCoords) {
             startCoords = inputStartCoords;
             zoom = 5;
             map = L.map(parentElement).setView(startCoords, zoom);
@@ -15,8 +14,9 @@ export const generateMap = (parentElement) => {
                 attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
             markers = L.layerGroup().addTo(map);
+            pubsub.subscribe("cancel",()=>{this.resetZoom()})
         },
-        render: () => {
+        render: function() {
             let dataKeys = Object.keys(data);
             markers.clearLayers();
 
@@ -25,22 +25,23 @@ export const generateMap = (parentElement) => {
                 marker.bindPopup("<b>" + data[e].place.name + "</b><br><b>Play:</b> " + e);
             });
         },
-        addPlay: (title, inputData) => {
+        addPlay: function(title, inputData) {
             if (!data[title]) {
                 data[title] = inputData;
             }
         },
-        getData: () => {
+        getData: function() {
             return data;
         },
-        setData: (inputData) => {
+        setData: function(inputData) {
             data = inputData;
         },
-        zoomToPlace: (coords, zoom) => {
+        zoomToPlace: function(coords, zoom) {
             map.flyTo(coords, zoom);
         },
-        resetZoom: () => {
+        resetZoom: function() {
             map.setView(startCoords, zoom);
         }
     };
+    return dict
 };

@@ -1,16 +1,13 @@
-export const generateSearchbar = (parentElement) => {
+export const generateSearchbar = (parentElement,pubsub) => {
     let placeholder;
     let searchCallback, cancelCallback;
-
+    
     return {
         build: (inputPlaceholder) => {
             placeholder = inputPlaceholder;
         },
         onsearch: (inputSearchCallback) => {
             searchCallback = inputSearchCallback;
-        },
-        oncancel: (inputCancelCallback) => {
-            cancelCallback = inputCancelCallback;
         },
         render: () => {
             let HTML = '<input type="search" class="form-control" placeholder="' + placeholder + '" id="searchText">'
@@ -19,7 +16,7 @@ export const generateSearchbar = (parentElement) => {
 
             document.getElementById("searchText").oninput = () => {
                 if(document.getElementById("searchText").value === ""){
-                    cancelCallback();
+                    pubsub.publish("cancel")
                 }
             }
 
@@ -31,7 +28,7 @@ export const generateSearchbar = (parentElement) => {
                         searchCallback(searchText);
                     }
                     else {
-                        cancelCallback();
+                        pubsub.publish("cancel")
                     }
                 }
               });

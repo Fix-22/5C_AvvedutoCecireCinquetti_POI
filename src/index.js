@@ -24,9 +24,9 @@ generateNavigator(pages);
 const pubsub = generatePubSub();
 const fetchComponent = generateFetchComponent();
 const geoencoder = generateGeoencoder();
-const map = generateMap(mapContainer);
-const homeTable = generateHomeTable(homeTableContainer);
-const searchbar = generateSearchbar(searchbarContainer);
+const map = generateMap(mapContainer,pubsub);
+const homeTable = generateHomeTable(homeTableContainer,pubsub);
+const searchbar = generateSearchbar(searchbarContainer,pubsub);
 const loginComponent = generateLoginComponent(loginContainer);
 const adminTable = generateAdminTable(adminTableContainer);
 const navbar = generateNavBarComponent(document.querySelector(".navbarContainer"));
@@ -92,10 +92,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
                 map.zoomToPlace(filterData[filterDataKeys[0]].place.coords, 12);
             }
         });
-        searchbar.oncancel(() => {
-            homeTable.render();
-            map.resetZoom();
-        });
+        
         searchbar.render();
 
         loginComponent.build(cacheToken, "private");

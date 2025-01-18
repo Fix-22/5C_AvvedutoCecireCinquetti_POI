@@ -1,4 +1,4 @@
-export const generateHomeTable = (parentElement) => {
+export const generateHomeTable = function(parentElement,pubsub)  {
     let header = [];
     let data = [];
     let articleContainer;
@@ -39,14 +39,15 @@ export const generateHomeTable = (parentElement) => {
             </div>
         </div>
     </div>`;
-
-    return {
-        build: (inputHeader, inputData, inputArticleContainer) => {
+    const dict ={
+        
+        build: function(inputHeader, inputData, inputArticleContainer) {
             header = inputHeader;
             data = inputData;
             articleContainer = inputArticleContainer;
+            pubsub.subscribe("cancel",()=>{this.render()})
         },
-        render: () => {
+        render: function() {
             let html = '<table class="table table-focus table-striped"><thead class="sticky-on-top"><tr>';
             
             header.forEach(e => {
@@ -74,7 +75,7 @@ export const generateHomeTable = (parentElement) => {
                 };
             }
         },
-        search: (input) => { // cerca nei dati le righe che contengono l'input (che può essere il titolo o il luogo dell'opera)
+        search: function(input) { // cerca nei dati le righe che contengono l'input (che può essere il titolo o il luogo dell'opera)
             let searchResults = {};
             
             let dataKeys = Object.keys(data);
@@ -86,7 +87,7 @@ export const generateHomeTable = (parentElement) => {
             });
             return searchResults;
         },
-        renderFilter: (newData) => { // metodo che fa la render di specifici dati, senza salvarli
+        renderFilter: function(newData) { // metodo che fa la render di specifici dati, senza salvarli
             let html = '<table class="table table-focus table-striped"><thead class="sticky-on-top"><tr>';
             
             header.forEach(e => {
@@ -103,11 +104,12 @@ export const generateHomeTable = (parentElement) => {
             html += "</tbody></table>";
             parentElement.innerHTML = html;
         },
-        setData: (inputData) => {
+        setData: function (inputData) {
             data = inputData;
         },
-        getData: () => {
+        getData: function () {
             return data;
         }
     }
+    return dict
 };
