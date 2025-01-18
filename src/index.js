@@ -82,10 +82,17 @@ fetch("./conf.json").then(r => r.json()).then(data => {
 
         searchbar.build("Insert play's title or place");
         searchbar.onsearch(data => {
-            homeTable.renderFilter(homeTable.search(data));
+            let filterData = homeTable.search(data);
+            let filterDataKeys = Object.keys(filterData);
+            homeTable.renderFilter(filterData);
+
+            if (filterDataKeys.length === 1) {
+                map.zoomToPlace(filterData[filterDataKeys[0]].place.coords, 12);
+            }
         });
         searchbar.oncancel(() => {
             homeTable.render();
+            map.resetZoom();
         });
         searchbar.render();
 
@@ -124,6 +131,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
                 if (!remoteData[title]) delete remoteData[focused];
                 remoteData[title] = article;
                 modal.hide();
+                adminForm.clear();
                 
                 spinner.classList.remove("d-none");
                 fetchComponent.setData("poi", remoteData).then(msg => {

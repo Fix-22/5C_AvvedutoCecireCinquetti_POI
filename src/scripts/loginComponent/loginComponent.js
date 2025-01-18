@@ -56,7 +56,7 @@ export const generateLoginComponent = (parentElement) => {
                             <input type="text" class="form-control" id="inputUsername" placeholder="Username">
                             <input type="password" class="form-control" id="inputPassword" placeholder="Password">
                             <button id="loginButton" type="button" class="btn btn-dark"><i class="bi bi-box-arrow-in-right"></i> Login</button>
-                            <div id="loginResult" class="form-text text-danger d-none">Incorrect username or password</div>
+                            <div id="loginResult" class="form-text text-danger"></div>
             </form>`;
             parentElement.innerHTML = html;
 
@@ -84,7 +84,7 @@ export const generateLoginComponent = (parentElement) => {
                             loginCallback();
                         } 
                         else {
-                            loginResult.classList.remove("d-none");
+                            loginResult.innerText = "Incorrect username or password";
                             document.getElementById("inputUsername").value = "";
                             document.getElementById("inputPassword").value = "";
                         }
@@ -92,6 +92,9 @@ export const generateLoginComponent = (parentElement) => {
                     .catch(err => {
                         console.log(err) ;
                     });
+                }
+                else {
+                    loginResult.innerText = "Not all forms compiled";
                 }
             };
         },

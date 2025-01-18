@@ -3,9 +3,11 @@ export const generateMap = (parentElement) => {
     let data = [];
     let zoom;
     let markers;
+    let startCoords;
     
     return {
-        build: (startCoords) => {
+        build: (inputStartCoords) => {
+            startCoords = inputStartCoords;
             zoom = 5;
             map = L.map(parentElement).setView(startCoords, zoom);
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -36,6 +38,9 @@ export const generateMap = (parentElement) => {
         },
         zoomToPlace: (coords, zoom) => {
             map.flyTo(coords, zoom);
+        },
+        resetZoom: () => {
+            map.setView(startCoords, zoom);
         }
     };
 };
