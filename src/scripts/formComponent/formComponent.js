@@ -70,7 +70,6 @@ export const generateForm = (parentElement, pubsub) => {
             document.querySelectorAll(".clearForm").forEach(b => {
                 b.onclick = () => {
                     if (b.id === "submitButton") {
-                        if(onEdit) onEdit = false;
                         if (workTitleInput.value && textInput.value && playMainLink.value && playSecondLink.value && playThirdLink.value && playLocation.value && playCharacters.value && playPubblicationYear.value && playEra.value) {
                             document.getElementById("adminFormTitle").innerText = "Add article";
 
@@ -132,6 +131,7 @@ export const generateForm = (parentElement, pubsub) => {
             if (articleDictionary.era) document.getElementById("playEra").value = articleDictionary.era ;
         },
         clear: () => {
+            onEdit = false;
             document.getElementById("adminFormTitle").innerText = "Add article";
             document.getElementById("workTitleInput").value = "" ;
             document.getElementById("textInput").value = "" ;
