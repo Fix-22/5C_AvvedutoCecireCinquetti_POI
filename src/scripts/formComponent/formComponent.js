@@ -102,6 +102,7 @@ export const generateForm = (parentElement, pubsub) => {
                         }
                     }
                     else {
+                        onEdit = false;
                         document.getElementById("adminFormTitle").innerText = "Add article";
                         workTitleInput.value = "" ;
                         textInput.value = "" ;

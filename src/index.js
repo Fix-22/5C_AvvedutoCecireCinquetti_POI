@@ -112,6 +112,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
             geoencoder.encode(fullArticle.article.place.name).then(data => {
                 fullArticle.article.place.coords = data.coords;
                 if (!remoteData[fullArticle.title] && adminForm.getEdit()) delete remoteData[focused];
+                else focused = undefined;
                 remoteData[fullArticle.title] = fullArticle.article;
                 modal.hide();
                 adminForm.clear();
