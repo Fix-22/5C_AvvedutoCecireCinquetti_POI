@@ -78,7 +78,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
         homeTable.build(["Play's title", "Place"], remoteData, articleContainer);
         homeTable.render();
 
-        map.build([41.896705, 12.482183]);
+        map.build([46.064811, 16.767506]);
         map.setData(remoteData);
         map.render();
 
