@@ -27,6 +27,9 @@ export const generateMap = function (parentElement,pubsub) {
                 this.setData(remoteData);
                 this.render();
             })
+            pubsub.subscribe("row-clicked",(coords) => {
+                this.zoomToPlace(coords, 15);
+            });
         },
         render: function() {
             let dataKeys = Object.keys(data);

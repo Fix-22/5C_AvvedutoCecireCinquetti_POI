@@ -75,7 +75,7 @@ export const generateHomeTable = function(parentElement,pubsub)  {
             let dataKeys = Object.keys(data);
 
             dataKeys.forEach(e => {
-                html += '<tr><td><a href="#article" id="' + e + '" class="articleLink">' + e + ' <i class="bi bi-box-arrow-up-right"></i></a></td><td>' + data[e].place.name + '</td></tr>';
+                html += '<tr class="table-row"><td><a href="#article" id="' + e + '" class="articleLink">' + e + ' <i class="bi bi-box-arrow-up-right"></i></a></td><td>' + data[e].place.name + '</td></tr>';
             });
 
             html += "</tbody></table>";
@@ -91,6 +91,12 @@ export const generateHomeTable = function(parentElement,pubsub)  {
                     articleContainer.innerHTML = articleTemplate.replaceAll("%PLAYTITLE", a.id).replace("%PLACE", currentArticleData.place.name).replace("%YEAROFPUB", currentArticleData.yearofpub).replace("%ERA", currentArticleData.era).replace("%RESUME", currentArticleData.resume).replace("%CHARACTERS", currentArticleData.characters).replace("%IMGLINK1", currentArticleData.images[0]).replace("%IMGLINK2", currentArticleData.images[1]).replace("%IMGLINK3", currentArticleData.images[2]);
                 };
             }
+            document.querySelectorAll(".table-row").forEach((e) => {
+                e.addEventListener("click", () => {
+                    const title = e.querySelector("td > a").id;
+                    pubsub.publish("row-clicked", data[title].place.coords);
+                });
+            });
         },
         search: function(input) { // cerca nei dati le righe che contengono l'input (che può essere il titolo o il luogo dell'opera)
             let searchResults = {};
