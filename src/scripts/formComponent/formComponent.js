@@ -1,11 +1,5 @@
-export const generateForm = (parentElement) => {
-    let callback  ;
-
-    return {
-        onsubmit : function(inputCallback) {
-            callback = inputCallback ;
-        },
-        
+export const generateForm = (parentElement, pubsub) => {
+    const formObject = {
         render : function() {
             let html = 
             `<form class="container-fluid">
@@ -94,8 +88,13 @@ export const generateForm = (parentElement) => {
                             article.images = newImages ;
                             article.characters = playCharacters.value ;
                             newImages = [];
+
+                            let fullArticle = {
+                                "title": title,
+                                "article": article
+                            }
                             
-                            callback(title, article);
+                            pubsub.publish("form-submit", fullArticle);
                         }
                         else {
                             resultLabel.innerText = "Not all forms compiled";
@@ -146,6 +145,7 @@ export const generateForm = (parentElement) => {
             document.getElementById("resultLabel").innerText = error;
         }
     }
+    return formObject;
 };
 
 

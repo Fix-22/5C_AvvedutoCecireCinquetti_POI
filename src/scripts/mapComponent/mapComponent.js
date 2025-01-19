@@ -4,7 +4,8 @@ export const generateMap = function (parentElement,pubsub) {
     let zoom;
     let markers;
     let startCoords;
-    const dict={
+    
+    const mapObject = {
         build: function(inputStartCoords) {
             startCoords = inputStartCoords;
             zoom = 5;
@@ -19,11 +20,7 @@ export const generateMap = function (parentElement,pubsub) {
                 let filterDataKeys = Object.keys(dat);
                 this.zoomToPlace(dat[filterDataKeys[0]].place.coords, 12);
             })
-            pubsub.subscribe("el-deleted",(remoteData)=>{
-                this.setData(remoteData);
-                this.render();
-            })
-            pubsub.subscribe("form-submit",(remoteData)=>{
+            pubsub.subscribe("get-remote-data",(remoteData)=>{
                 this.setData(remoteData);
                 this.render();
             })
@@ -58,5 +55,5 @@ export const generateMap = function (parentElement,pubsub) {
             map.setView(startCoords, zoom);
         }
     };
-    return dict
+    return mapObject;
 };

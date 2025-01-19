@@ -83,35 +83,36 @@ fetch("./conf.json").then(r => r.json()).then(data => {
         map.render();
 
         searchbar.build("Insert play's title or place");
-
         searchbar.render();
 
         loginComponent.build(cacheToken, "private");
-
         loginComponent.renderForm();
-        let focused;
+
         adminTable.build(["Play's title", "Manage"], remoteData);
-        adminTable.onelementedit(playTitle => {
+
+        let focused;
+        
+        pubsub.subscribe("el-edited", playTitle => {
             focused = playTitle;
             adminForm.setInputsValue(playTitle, remoteData[playTitle]);
         });
-        adminTable.onelementdelete(newData => {
+        pubsub.subscribe("el-deleted", newData => {
             spinner.classList.remove("d-none");
             fetchComponent.setData("poi", newData).then(msg => {
                 fetchComponent.getData("poi").then(data => {
                     remoteData = data;
-                    pubsub.publish("el-deleted",remoteData)
+                    pubsub.publish("get-remote-data",remoteData)
                     spinner.classList.add("d-none");
                 });
             });
         });
         adminTable.render();
 
-        adminForm.onsubmit((title, article) => {
-            geoencoder.encode(article.place.name).then(data => {
-                article.place.coords = data.coords;
-                if (!remoteData[title]) delete remoteData[focused];
-                remoteData[title] = article;
+        pubsub.subscribe("form-submit", fullArticle => {
+            geoencoder.encode(fullArticle.article.place.name).then(data => {
+                fullArticle.article.place.coords = data.coords;
+                if (!remoteData[fullArticle.title]) delete remoteData[focused];
+                remoteData[fullArticle.title] = fullArticle.article;
                 modal.hide();
                 adminForm.clear();
                 
@@ -119,7 +120,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
                 fetchComponent.setData("poi", remoteData).then(msg => {
                     fetchComponent.getData("poi").then(data => {
                         remoteData = data;
-                        pubsub.publish("form-submit",remoteData)
+                        pubsub.publish("get-remote-data",remoteData)
                         spinner.classList.add("d-none");
                     });
                 });

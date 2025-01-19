@@ -1,26 +1,15 @@
 export const generateAdminTable = (parentElement,pubsub) => {
     let header = [];
     let data = [];
-    let elementDeleteCallback, elementEditCallback;
 
-    const dict ={
+    const tableObject = {
         build: function(inputHeader, inputData) {
             header = inputHeader;
             data = inputData;
-            pubsub.subscribe("el-deleted",(remoteData)=>{
+            pubsub.subscribe("get-remote-data",(remoteData)=>{
                 this.setData(remoteData);
                 this.render();
             })
-            pubsub.subscribe("form-submit",(remoteData)=>{
-                this.setData(remoteData);
-                this.render();
-            })
-        },
-        onelementedit: (inputElementEditCallback) => {
-            elementEditCallback = inputElementEditCallback;
-        },
-        onelementdelete: (inputElementDeleteCallback) => {
-            elementDeleteCallback = inputElementDeleteCallback;
         },
         render: function() {
             let html = '<table class="table table-focus table-striped"><thead class="sticky-on-top"><tr>';
@@ -42,7 +31,7 @@ export const generateAdminTable = (parentElement,pubsub) => {
             document.querySelectorAll(".editButton").forEach(b => {
                 b.onclick = () => {
                     const playTitle = b.id.replace("edit-", "");
-                    elementEditCallback(playTitle);
+                    pubsub.publish("el-edited", playTitle);
                 };
             });
 
@@ -52,7 +41,7 @@ export const generateAdminTable = (parentElement,pubsub) => {
                     
                     delete data[playTitle];
                     
-                    elementDeleteCallback(data);
+                    pubsub.publish("el-deleted", data);
                 };
             });
         },
@@ -62,6 +51,6 @@ export const generateAdminTable = (parentElement,pubsub) => {
         getData: function() {
             return data;
         }
-    }
-    return dict
+    };
+    return tableObject;
 };

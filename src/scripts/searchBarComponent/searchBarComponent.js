@@ -1,6 +1,5 @@
 export const generateSearchbar = (parentElement,pubsub) => {
     let placeholder;
-    let searchCallback, cancelCallback;
     
     return {
         build: (inputPlaceholder) => {

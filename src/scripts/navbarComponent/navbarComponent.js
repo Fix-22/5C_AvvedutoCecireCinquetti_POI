@@ -1,6 +1,7 @@
 export function generateNavBarComponent(parentElement,pubsub) {
     let elements;
-    const dict ={
+    
+    const navbarObject = {
         build: function(list) {
           elements = list;
           pubsub.subscribe("login",()=>{
@@ -42,6 +43,6 @@ export function generateNavBarComponent(parentElement,pubsub) {
                 else  container.classList.add("d-none");
             }
         }
-    }
-    return dict;
+    };
+    return navbarObject;
 }

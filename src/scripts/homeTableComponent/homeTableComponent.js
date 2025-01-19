@@ -2,7 +2,6 @@ export const generateHomeTable = function(parentElement,pubsub)  {
     let header = [];
     let data = [];
     let articleContainer;
-
     const articleTemplate = `<div class="container">
         <div class="row d-flex justify-content-center">
             <div class="long-line"></div>
@@ -39,23 +38,18 @@ export const generateHomeTable = function(parentElement,pubsub)  {
             </div>
         </div>
     </div>`;
-    const dict ={
-        
+    
+    const tableObject = {
         build: function(inputHeader, inputData, inputArticleContainer) {
             header = inputHeader;
             data = inputData;
             articleContainer = inputArticleContainer;
-            pubsub.subscribe("el-deleted",(remoteData)=>{
+            pubsub.subscribe("get-remote-data",(remoteData)=>{
                 this.setData(remoteData)
                 this.render()
             })
-            pubsub.subscribe("form-submit",(remoteData)=>{
-                this.setData(remoteData);
-                this.render();
-            })
             pubsub.subscribe("cancel",()=>{this.render()})
             pubsub.subscribe("search",(input)=>{
-                console.log(input)
                 let filterData = this.search(input);
                 let filterDataKeys = Object.keys(filterData);
                 this.renderFilter(filterData);
@@ -134,5 +128,5 @@ export const generateHomeTable = function(parentElement,pubsub)  {
             return data;
         }
     }
-    return dict
+    return tableObject;
 };
