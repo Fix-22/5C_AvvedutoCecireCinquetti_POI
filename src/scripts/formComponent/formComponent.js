@@ -1,4 +1,5 @@
 export const generateForm = (parentElement, pubsub) => {
+    let onEdit;
     const formObject = {
         render : function() {
             let html = 
@@ -69,6 +70,7 @@ export const generateForm = (parentElement, pubsub) => {
             document.querySelectorAll(".clearForm").forEach(b => {
                 b.onclick = () => {
                     if (b.id === "submitButton") {
+                        if(onEdit) onEdit = false;
                         if (workTitleInput.value && textInput.value && playMainLink.value && playSecondLink.value && playThirdLink.value && playLocation.value && playCharacters.value && playPubblicationYear.value && playEra.value) {
                             document.getElementById("adminFormTitle").innerText = "Add article";
 
@@ -117,6 +119,7 @@ export const generateForm = (parentElement, pubsub) => {
             })
         },
         setInputsValue : (title, articleDictionary) => {
+            onEdit = true;
             document.getElementById("adminFormTitle").innerText = "Edit article (" + title + ")";
             if (title) document.getElementById("workTitleInput").value = title ;
             if (articleDictionary.resume) document.getElementById("textInput").value = articleDictionary.resume ;
@@ -143,6 +146,9 @@ export const generateForm = (parentElement, pubsub) => {
         },
         setError: (error) => {
             document.getElementById("resultLabel").innerText = error;
+        },
+        getEdit: () => {
+            return onEdit;
         }
     }
     return formObject;
