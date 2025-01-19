@@ -15,6 +15,7 @@ export const generateMap = function (parentElement,pubsub) {
                 attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
             markers = L.layerGroup().addTo(map);
+
             pubsub.subscribe("cancel",()=>{this.resetZoom()})
             pubsub.subscribe("zoomToPlace",(dat)=>{
                 let filterDataKeys = Object.keys(dat);
@@ -36,11 +37,6 @@ export const generateMap = function (parentElement,pubsub) {
                 const marker = L.marker(data[e].place.coords).addTo(markers);
                 marker.bindPopup("<b>" + data[e].place.name + "</b><br><b>Play:</b> " + e);
             });
-        },
-        addPlay: function(title, inputData) {
-            if (!data[title]) {
-                data[title] = inputData;
-            }
         },
         getData: function() {
             return data;
