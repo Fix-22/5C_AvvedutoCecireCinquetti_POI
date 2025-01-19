@@ -111,7 +111,6 @@ fetch("./conf.json").then(r => r.json()).then(data => {
         pubsub.subscribe("form-submit", fullArticle => {
             geoencoder.encode(fullArticle.article.place.name).then(data => {
                 fullArticle.article.place.coords = data.coords;
-                if (!remoteData[fullArticle.title]) delete remoteData[focused];
                 remoteData[fullArticle.title] = fullArticle.article;
                 modal.hide();
                 adminForm.clear();
