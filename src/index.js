@@ -63,13 +63,17 @@ fetch("./conf.json").then(r => r.json()).then(data => {
     fetchComponent.build(cacheToken);
     geoencoder.build(mapsToken);
 
-    navbar.build([
-        '<button type="button" class="btn btn-light" id="searchButton"><i class="bi bi-search"></i> Search</button>',
-        '<img src="/src/assets/logo.png" class="logo navbar-brand">',
-        '<a href="#admin"><button type="button" class="btn btn-dark"><i class="bi bi-gear"></i> Administration</button></a>'
-    ]);
-    navbar.render();
-
+    const setNavbar = () => {
+        const url = new URL(document.location.href);
+        let nav;
+        if(!url.hash || url.hash === "#home") nav = navbarEl[0];
+        else if (url.hash === "#article") nav = navbarEl[1];
+        else if(url.hash === "#admin" && !loginComponent.isLogged()) nav = navbarEl[2];
+        else if(url.hash === "#admin" && loginComponent.isLogged()) nav = navbarEl[3];
+        navbar.build(nav);
+        navbar.render();
+    };
+    
     let remoteData;
 
     fetchComponent.getData("poi").then(data => {
@@ -87,6 +91,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
 
         loginComponent.build(cacheToken, "private");
         loginComponent.renderForm();
+        setNavbar();
 
         adminTable.build(["Play's title", "Manage"], remoteData);
 
@@ -135,14 +140,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
 
         spinner.classList.add("d-none");
         window.addEventListener("popstate", () => {
-            const url = new URL(document.location.href);
-            let nav;
-            if(!url.hash || url.hash === "#home") nav = navbarEl[0];
-            else if (url.hash === "#article") nav = navbarEl[1];
-            else if(url.hash === "#admin" && !loginComponent.isLogged()) nav = navbarEl[2];
-            else if(url.hash === "#admin" && loginComponent.isLogged()) nav = navbarEl[3];
-            navbar.build(nav);
-            navbar.render();
+            setNavbar();
         });
     });
 });
