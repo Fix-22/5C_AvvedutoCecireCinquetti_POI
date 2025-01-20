@@ -18,9 +18,8 @@ const searchbarContainer = document.getElementById("searchbarContainer");
 const loginContainer = document.getElementById("loginContainer");
 const adminTableContainer = document.getElementById("adm-tab");
 const modalBody = document.getElementById("modalBody");
-const articleContainer = document.getElementById("article");
+const articlesContainer = document.getElementById("articles");
 
-generateNavigator(pages);
 const pubsub = generatePubSub();
 const fetchComponent = generateFetchComponent();
 const geoencoder = generateGeoencoder();
@@ -31,6 +30,54 @@ const loginComponent = generateLoginComponent(loginContainer,pubsub);
 const adminTable = generateAdminTable(adminTableContainer,pubsub);
 const navbar = generateNavBarComponent(document.querySelector(".navbarContainer"),pubsub);
 const adminForm = generateForm(modalBody,pubsub);
+
+const articleTemplate = `<div id="article-%HASH" class="page d-none"><div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="long-line"></div>
+        </div>
+        <div class="row">
+            <p class="topic" id="title">%PLAYTITLE | POI - Shakespeare's Places</p>
+        </div>
+        <h1>%PLAYTITLE</h1>
+        <div class="row">
+            <h6 class="topic">Location: %PLACE</h6>
+            <h6 class="topic">Year of pubblication: %YEAROFPUB</h6>
+            <h6 class="topic">Era: %ERA</h6>
+        </div>
+        <div class="short-line"></div>
+        <div class="article-content">
+            <div class="row main-img-container">
+                <img src="%IMGLINK1" alt="image A">
+            </div>
+            <div class="row">
+                <h2>Resume</h2>
+                <p>%RESUME</p>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <img class="vert-img" src="%IMGLINK2" alt="image B">
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <img class="vert-img" src="%IMGLINK3" alt="image C">
+                </div>
+            </div>
+            <div class="row">
+                <h2>Main characters</h2>
+                <p>%CHARACTERS</p>
+            </div>
+        </div>
+    </div></div>`;
+
+const generateArticles = (data) => {
+    let dataKeys = Object.keys(data);
+
+    let div = "";
+    for (let i = 0; i < dataKeys.length; i++) {
+        let currentArticleData = data[dataKeys[i]];
+        div += articleTemplate.replace("%HASH", dataKeys[i].replaceAll(" ", "-")).replaceAll("%PLAYTITLE", dataKeys[i]).replace("%PLACE", currentArticleData.place.name).replace("%YEAROFPUB", currentArticleData.yearofpub).replace("%ERA", currentArticleData.era).replace("%RESUME", currentArticleData.resume).replace("%CHARACTERS", currentArticleData.characters).replace("%IMGLINK1", currentArticleData.images[0]).replace("%IMGLINK2", currentArticleData.images[1]).replace("%IMGLINK3", currentArticleData.images[2]);
+    }
+    articlesContainer.innerHTML = div;
+}
 
 fetch("./conf.json").then(r => r.json()).then(data => {
     const navbarEl = [
@@ -67,7 +114,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
         const url = new URL(document.location.href);
         let nav;
         if(!url.hash || url.hash === "#home") nav = navbarEl[0];
-        else if (url.hash === "#article") nav = navbarEl[1];
+        else if (url.hash.includes("#article")) nav = navbarEl[1];
         else if(url.hash === "#admin" && !loginComponent.isLogged()) nav = navbarEl[2];
         else if(url.hash === "#admin" && loginComponent.isLogged()) nav = navbarEl[3];
         navbar.build(nav);
@@ -79,7 +126,10 @@ fetch("./conf.json").then(r => r.json()).then(data => {
     fetchComponent.getData("poi").then(data => {
         remoteData = data;
 
-        homeTable.build(["Play's title", "Place"], remoteData, articleContainer);
+        generateArticles(remoteData);
+        generateNavigator(pages);
+
+        homeTable.build(["Play's title", "Place"], remoteData);
         homeTable.render();
 
         map.build([46.064811, 16.767506]);
@@ -137,6 +187,11 @@ fetch("./conf.json").then(r => r.json()).then(data => {
             });
         });
         adminForm.render();
+
+        pubsub.subscribe("get-remote-data", () => {
+            generateArticles(remoteData);
+            generateNavigator(pages);
+        });
 
         spinner.classList.add("d-none");
         window.addEventListener("popstate", () => {

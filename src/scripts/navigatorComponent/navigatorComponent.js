@@ -13,7 +13,8 @@ export const generateNavigator = (parentElement) => {
       const url = new URL(document.location.href);
       const pageName = url.hash.replace("#", "");
       const selectedPage = pages.filter((page) => page.id === pageName)[0] || pages[0];
-      document.title = selectedPage.id.charAt(0).toUpperCase() + selectedPage.id.substring(1) + " | POI - Shakespeare's Places";
+      document.title = selectedPage.id.replace("article-", "").replaceAll("-", " ") + " | POI - Shakespeare's Places";
+      document.title = document.title[0].toUpperCase() + document.title.substring(1);
 
       pages.forEach(p => hide(p));
       show(selectedPage);
