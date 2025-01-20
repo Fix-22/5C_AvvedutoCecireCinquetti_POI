@@ -117,11 +117,11 @@ fetch("./conf.json").then(r => r.json()).then(data => {
 
         const setNavbar = (inputData) => {
             const keys = Object.keys(inputData);
-
+            
             const url = new URL(document.location.href);
             let nav;
             if(!url.hash || url.hash === "#home") nav = navbarEl[0];
-            else if (keys.indexOf(url.hash.replace("#article-")) !== -1) nav = navbarEl[1];
+            else if (keys.indexOf(url.hash.replace("#article-", "").replaceAll("-", " ")) !== -1) nav = navbarEl[1];
             else if(url.hash === "#admin" && !loginComponent.isLogged()) nav = navbarEl[2];
             else if(url.hash === "#admin" && loginComponent.isLogged()) nav = navbarEl[3];
             else nav = navbarEl[0];
