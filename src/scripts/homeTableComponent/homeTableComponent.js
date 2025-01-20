@@ -68,7 +68,7 @@ export const generateHomeTable = function(parentElement,pubsub)  {
             let dataKeys = Object.keys(newData);
 
             dataKeys.forEach(e => {
-                html += '<tr><td><a href="#article" id="' + e + '" class="articleLink">' + e + ' <i class="bi bi-box-arrow-up-right"></i></a></td><td>' + data[e].place.name + '</td></tr>';
+                html += '<tr><td><a href="#article-' + e.replaceAll(" ", "-") + '"id="' + e + '" class="articleLink">' + e + ' <i class="bi bi-box-arrow-up-right"></i></a></td><td>' + data[e].place.name + '</td></tr>';
             });
 
             html += "</tbody></table>";

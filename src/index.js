@@ -109,22 +109,25 @@ fetch("./conf.json").then(r => r.json()).then(data => {
 
     fetchComponent.build(cacheToken);
     geoencoder.build(mapsToken);
-
-    const setNavbar = () => {
-        const url = new URL(document.location.href);
-        let nav;
-        if(!url.hash || url.hash === "#home") nav = navbarEl[0];
-        else if (url.hash.includes("#article")) nav = navbarEl[1];
-        else if(url.hash === "#admin" && !loginComponent.isLogged()) nav = navbarEl[2];
-        else if(url.hash === "#admin" && loginComponent.isLogged()) nav = navbarEl[3];
-        navbar.build(nav);
-        navbar.render();
-    };
     
     let remoteData;
 
     fetchComponent.getData("poi").then(data => {
         remoteData = data;
+
+        const setNavbar = (inputData) => {
+            const keys = Object.keys(inputData);
+
+            const url = new URL(document.location.href);
+            let nav;
+            if(!url.hash || url.hash === "#home") nav = navbarEl[0];
+            else if (keys.indexOf(url.hash.replace("#article-")) !== -1) nav = navbarEl[1];
+            else if(url.hash === "#admin" && !loginComponent.isLogged()) nav = navbarEl[2];
+            else if(url.hash === "#admin" && loginComponent.isLogged()) nav = navbarEl[3];
+            else nav = navbarEl[0];
+            navbar.build(nav);
+            navbar.render();
+        };
 
         generateArticles(remoteData);
         generateNavigator(pages);
@@ -141,7 +144,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
 
         loginComponent.build(cacheToken, "private");
         loginComponent.renderForm();
-        setNavbar();
+        setNavbar(remoteData);
 
         adminTable.build(["Play's title", "Manage"], remoteData);
 
@@ -195,7 +198,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
 
         spinner.classList.add("d-none");
         window.addEventListener("popstate", () => {
-            setNavbar();
+            setNavbar(remoteData);
         });
     });
 });
