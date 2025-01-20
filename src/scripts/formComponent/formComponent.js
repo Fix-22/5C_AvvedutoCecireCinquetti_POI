@@ -73,9 +73,9 @@ export const generateForm = (parentElement, pubsub) => {
                         if (workTitleInput.value && textInput.value && playMainLink.value && playSecondLink.value && playThirdLink.value && playLocation.value && playCharacters.value && playPubblicationYear.value && playEra.value) {
                             document.getElementById("adminFormTitle").innerText = "Add article";
 
-                            if (playMainLink.value && newImages.indexOf(playMainLink.value) === -1) newImages.push(playMainLink.value)
-                            if (playSecondLink.value && newImages.indexOf(playSecondLink.value) === -1) newImages.push(playSecondLink.value)
-                            if (playThirdLink.value && newImages.indexOf(playThirdLink.value) === -1) newImages.push(playThirdLink.value)
+                            if (playMainLink.value) newImages.push(playMainLink.value)
+                            if (playSecondLink.value) newImages.push(playSecondLink.value)
+                            if (playThirdLink.value) newImages.push(playThirdLink.value)
     
                             let article = {} ;
                             let title = workTitleInput.value ;

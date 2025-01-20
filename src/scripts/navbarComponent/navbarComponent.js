@@ -39,8 +39,12 @@ export function generateNavBarComponent(parentElement,pubsub) {
             if (btn)  
                 btn.onclick = () => {
                 const container = document.querySelector("#searchbarContainer");
-                if (container.classList.contains("d-none")) container.classList.remove("d-none");
-                else  container.classList.add("d-none");
+                if (container.classList.contains("d-none")) {
+                    container.classList.remove("d-none");
+                }
+                else {
+                    container.classList.add("d-none");
+                }
             }
         }
     };
