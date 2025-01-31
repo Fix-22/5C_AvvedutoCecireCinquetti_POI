@@ -1,4 +1,4 @@
 conf.json
 package-lock.json
 node_modules/
-docs/assets
+.DS_Store
