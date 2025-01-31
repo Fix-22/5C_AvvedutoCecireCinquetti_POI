@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-    <title>Home | POI - Shakespeare's Places</title>
+    <title>Administration | POI - Shakespeare's Places</title>
     
     <!-- Meta -->
     <meta charset="utf-8">
@@ -19,26 +19,20 @@
 
     <!-- Theme CSS -->  
     <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-	<style>
-		#map {
-			width: 600px;
-			height: 300px;
-		}
-	</style>
 </head> 
 
-<body>  
+<body>
+	
+
     <header class="header fixed-top">	 
         <div class="branding docs-branding">
             <div class="container-fluid position-relative py-2 inline">
                 <div class="docs-logo-wrapper">
-	                <div class="site-logo"><a class="navbar-brand" href="index.html"><img class="logo-icon me-2" src="assets/images/coderdocs-logo.svg" alt="logo"><span class="logo-text">Shakespeare's<span class="text-alt"> places</span></span></a></div>    
+	                <div class="site-logo"><a class="navbar-brand" href="home.html"><img class="logo-icon me-2" src="assets/images/coderdocs-logo.svg" alt="logo"><span class="logo-text">Shakespeare's<span class="text-alt"> places</span></span></a></div>    
                 </div><!--//docs-logo-wrapper-->
 	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
-		            <button type="button" class="btn btn-secondary me-1"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
-					<a href="admin.html" class="btn btn-primary"><i class="fa-solid fa-gear"></i> Administration</a>
+		            <button type="button" class="btn btn-secondary me-1"><i class="fa-solid fa-file-circle-plus"></i> Add an article</button>
+					<a href="home.html" class="btn btn-primary"><i class="fa-solid fa-house"></i> Home</a>
 	            </div><!--//docs-top-utilities-->
             </div><!--//container-->
         </div><!--//branding-->
@@ -48,91 +42,41 @@
 	    <div class="theme-bg-shapes-right"></div>
 	    <div class="theme-bg-shapes-left"></div>
 	    <div class="container">
-		    <h1 class="page-heading single-col-max mx-auto">POI - Shakespeare's places</h1>
-		    <div class="page-intro single-col-max mx-auto">Everything about Shakespeare's plays.</div>
-		    <div class="main-search-box pt-3 d-block mx-auto">
-                 <form class="search-form w-100">
-		            <input type="text" placeholder="Search by place or play's title..." name="search" class="form-control search-input">
-		            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
-		        </form>
-             </div>
-	    </div>
+		    <h1 class="page-heading single-col-max mx-auto">Administration</h1>
+		    <div class="page-intro single-col-max mx-auto">Manage all the articles.</div>	    
+		</div>
     </div><!--//page-header-->
    <div class="page-content">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="table-responsive my-4">
-						<h2>Places</h2>
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th scope="col">#</th>
-									<th scope="col">Play's title</th>
-									<th scope="col">Place</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th scope="row">1</th>
-									<td><a href="article.html">Play 1 <i class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
-									<td>Place 1</td>
-								</tr>
-								<tr>
-									<th scope="row">2</th>
-									<td><a href="article.html">Play 2 <i class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
-									<td>Place 2</td>
-								</tr>
-							</tbody>
-						</table>
-					</div><!--//table-responsive-->
-				</div>
-				<div class="col">
-					<div class="my-4">
-						<h2>Map</h2>
-						
-					</div>
-				</div>
-			</div>
+		<div class="container my-4">
+			<h2>Informations</h2>
+			<p>Manage all your contents inside one page.</p>
+			<p>Use the edit button to change all the informations about the article.</p>
+			<p>Use the delete button to remove permanently an article.</p>
 		</div>
-	    <div class="container">
-		    <div class="docs-overview py-5">
-			    <div class="row justify-content-center">
-				    <div class="col-12 col-lg-4 py-3">
-					    <div class="card shadow-sm">
-						    <div class="card-body">
-							    <h5 class="card-title mb-3">
-								    <span class="theme-icon-holder card-icon-holder me-2">
-								        <i class="fa-brands fa-creative-commons"></i>
-							        </span><!--//card-icon-holder-->
-							        <span class="card-title-text">License</span>
-							    </h5>
-							    <div class="card-text">
-								    Read all the information about the license before using any content of this product.
-							    </div>
-							    <a class="card-link-mask" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"></a>
-						    </div><!--//card-body-->
-					    </div><!--//card-->
-				    </div><!--//col-->
-				    <div class="col-12 col-lg-4 py-3">
-					    <div class="card shadow-sm">
-						    <div class="card-body">
-							    <h5 class="card-title mb-3">
-								    <span class="theme-icon-holder card-icon-holder me-2">
-								        <i class="fa-brands fa-github"></i>
-							        </span><!--//card-icon-holder-->
-							        <span class="card-title-text">Official repository</span>
-							    </h5>
-							    <div class="card-text">
-								    View the official source of the project.
-								</div>
-							    <a class="card-link-mask" target="_blank" href="https://github.com/Fix-22/5C_AvvedutoCecireCinquetti_POI"></a>
-						    </div><!--//card-body-->
-					    </div><!--//card-->
-				    </div><!--//col-->
-			    </div><!--//row-->
-		    </div><!--//container-->
-		</div><!--//container-->
+		<div class="container">
+			<div class="table-responsive my-4">
+				<h2>Places</h2>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Article</th>
+							<th scope="col">Manage</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td><a href="article.html">Play <i class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
+							<td>
+								<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                            	<button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div><!--//table-responsive-->
+		</div>
     </div><!--//page-content-->
 
     <section class="cta-section text-center py-5 theme-bg-dark position-relative">
