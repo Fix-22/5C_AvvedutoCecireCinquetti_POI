@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>CoderDocs - Bootstrap Documentation Template For Software Projects</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="description" content="Bootstrap Documentation Template For Software Developers">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome JS-->
+    <script defer src="assets/fontawesome/js/all.min.js"></script>
+    
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="assets/plugins/simplelightbox/simple-lightbox.min.css">
+
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+
+</head> 
+
+<body class="docs-page">    
+    <header class="header fixed-top">	 
+        <div class="branding docs-branding">
+            <div class="container-fluid position-relative py-2 inline">
+                <div class="docs-logo-wrapper">
+	                <div class="site-logo"><a class="navbar-brand" href="index.html"><img class="logo-icon me-2" src="assets/images/coderdocs-logo.svg" alt="logo"><span class="logo-text">Shakespeare's<span class="text-alt"> places</span></span></a></div>    
+                </div><!--//docs-logo-wrapper-->
+	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+		            <a href="home.html" class="btn btn-primary me-1"><i class="fa-solid fa-house"></i> Home</a>
+					<a href="admin.html" class="btn btn-primary"><i class="fa-solid fa-gear"></i> Administration</a>
+	            </div><!--//docs-top-utilities-->
+            </div><!--//container-->
+        </div><!--//branding-->
+    </header><!--//header-->
+    
+    <div class="docs-wrapper">
+	    <div id="docs-sidebar" class="docs-sidebar">
+		    <div class="top-search-box d-lg-none p-3">
+                <form class="search-form">
+		            <input type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
+		            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+		        </form>
+            </div>
+		    <nav id="docs-nav" class="docs-nav navbar">
+			    <ul class="section-items list-unstyled nav flex-column pb-3">
+				    <li class="nav-item section-title"><a class="nav-link scrollto active" href="#main"><span class="theme-icon-holder me-2"><i class="fa-solid fa-book"></i></span>%PLAYTITLE</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#mainImage">Main image</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#resume">Resume</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#otherImages">Other images</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#characters">Main characters</a></li>
+			    </ul>
+		    </nav><!--//docs-nav-->
+	    </div><!--//docs-sidebar-->
+	    <div class="docs-content">
+		    <div class="container">
+			    <article class="docs-article" id="main">
+				    <header class="docs-header">
+					    <h1 class="docs-heading">%PLAYTITLE</h1>
+						<div class="callout-block callout-block-info">
+                            <div class="content">
+                                <p><strong><i class="fa-solid fa-location-dot"></i> Location:</strong> %PLACE</p>
+								<p><strong><i class="fa-solid fa-calendar-days"></i> Year of pubblication:</strong> %YEAROFPUB</p>
+								<p><strong><i class="fa-solid fa-hourglass"></i> Era:</strong> %ERA</p>
+                            </div><!--//content-->
+                        </div><!--//callout-block-->
+				    </header>
+
+					<section class="docs-section" id="mainImage">
+						<div class="d-flex justify-content-center align-items-center">
+							<a target="_blank" href="%IMGLINK1"><img class="figure-img img-fluid shadow rounded" src="%IMGLINK1" alt="Main image" title="Main image"/></a>
+						</div>
+					</section>
+
+				    <section class="docs-section" id="resume">
+						<h2 class="section-heading">Resume</h2>
+						<p>%RESUME</p>
+                       
+					</section><!--//section-->
+					
+					<section class="docs-section" id="otherImages">
+						<div class="row mb-3 align-items-center justify-content-center">
+							<div class="col-md-6 mb-1">
+								<a target="_blank" href="%IMGLINK2"><img class="figure-img img-fluid shadow rounded" src="%IMGLINK2" alt="Other image 1" title="Other image 1"/></a>
+							</div>
+							<div class="col-md-6 mb-1">
+								<a target="_blank" href="%IMGLINK3"><img class="figure-img img-fluid shadow rounded" src="%IMGLINK3" alt="Other image 2" title="Other image 2"/></a>
+							</div>
+						</div>
+					</section>
+					
+					<section class="docs-section" id="characters">
+						<h2 class="section-heading">Main characters</h2>
+						<p>%CHARACTERS</p>
+					</section><!--//section-->
+			    </article>
+
+			    <section class="cta-section text-center py-5 theme-bg-dark position-relative">
+					<div class="theme-bg-shapes-right"></div>
+					<div class="theme-bg-shapes-left"></div>
+					<div class="container">
+						<small class="copyright" id="footerText"></small>
+					</div>
+				</section><!--//cta-section-->
+		    </div> 
+	    </div>
+    </div><!--//docs-wrapper-->
+   
+       
+    <!-- Javascript -->          
+    <script src="assets/plugins/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+    
+    
+    <!-- Page Specific JS -->
+    <script src="assets/plugins/smoothscroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+    <script src="assets/js/highlight-custom.js"></script> 
+    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>      
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
+    <script src="assets/js/docs.js"></script> 
+	<script>
+		const year = new Date().getFullYear();
+		document.getElementById("footerText").innerText = "© " + year + " - Luca Avveduto, Simone Cecire, Simone Cinquetti - All rights reserved.";
+	</script>
+</body>
+</html> 
+
