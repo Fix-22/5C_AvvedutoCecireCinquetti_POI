@@ -28,7 +28,7 @@
         <div class="branding docs-branding">
             <div class="container-fluid position-relative py-2 inline">
                 <div class="docs-logo-wrapper">
-	                <div class="site-logo"><a class="navbar-brand" href="home.html"><img class="logo-icon me-2" src="assets/images/coderdocs-logo.svg" alt="logo"><span class="logo-text">Shakespeare's<span class="text-alt"> places</span></span></a></div>    
+	                <div class="site-logo"><a class="navbar-brand" href="home.html"><img class="logo-icon me-2" src="assets/images/coderdocs-logo.svg" alt="logo"><span class="logo-text d-none d-sm-inline">Shakespeare's<span class="text-alt"> places</span></span></a></div>    
                 </div><!--//docs-logo-wrapper-->
 	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
 					<a href="home.html" class="btn btn-primary"><i class="fa-solid fa-house"></i> Home</a>
@@ -56,8 +56,6 @@
 	    <div class="theme-bg-shapes-left"></div>
 	    <div class="container">
 		    <small class="copyright" id="footerText"></small>
-            <br>
-			<small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
 	    </div>
     </section><!--//cta-section-->
        
@@ -72,8 +70,8 @@
     <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>      
     <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
 	<script>
-		const year = new Date().getFullYear();
-		document.getElementById("footerText").innerText = "© " + year + " - Luca Avveduto, Simone Cecire, Simone Cinquetti - All rights reserved.";
+		const year = new Date().getFullYear()
+		document.getElementById("footerText").innerHTML = "© " + year + ' - Luca Avveduto, Simone Cecire, Simone Cinquetti - All rights reserved. Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers';
 	</script>
 </body>
 </html> 
