@@ -136,6 +136,11 @@ fetch("/src/conf.json")
       [
         '<a href="#admin" class="btn btn-primary"><i class="fa-solid fa-gear"></i>Administration</a>',
         '<a href="#home" class="btn btn-primary"><i class="fa-solid fa-house"></i>Home</a>',
+        `<button id="docs-sidebar-toggler" class="docs-sidebar-toggler docs-sidebar-visible me-2 d-xl-none" type="button">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>`
       ],
       ['<a href="#home"><img src="/src/assets/home.png" alt="home"></a>'],
       [
