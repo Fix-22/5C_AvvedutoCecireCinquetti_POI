@@ -22,8 +22,6 @@
 </head> 
 
 <body>
-	
-
     <header class="header fixed-top">	 
         <div class="branding docs-branding">
             <div class="container-fluid position-relative py-2 inline">
@@ -88,6 +86,73 @@
 			<small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
 	    </div>
     </section><!--//cta-section-->
+
+	<div class="modal fade" id="modalForm" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="d-block">
+                        <h2 class="modal-title" id="exampleModalLabel">Add/Edit article</h2>
+                    </div>
+                    <button type="button" class="btn-close clearForm" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <form class="container-fluid">
+                        <div class="row md-row">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Title (precompiled if 'edit' is pressed)" id="playTitle">
+                            </div>
+                            <div class="col">
+                                <textarea class="form-control" rows="8"
+                                    placeholder="Text (precompiled if 'edit' is pressed)" id="playText"></textarea>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control"
+                                    placeholder="Main image link (precompiled if 'edit' is pressed)" id="playMainLink">
+                            </div>
+                        </div>
+                        <div class="row md-row">
+                            <div class="col">
+                                <input type="text" class="form-control"
+                                    placeholder="Location (precompiled if 'edit' is pressed)" id="playLocation">
+                            </div>
+                            <div class="col">
+                                <textarea class="form-control" rows="4"
+                                    placeholder="Main characters (precompiled if 'edit' is pressed)"
+                                    id="playCharacters"></textarea>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control"
+                                    placeholder="Second image link (precompiled if 'edit' is pressed)"
+                                    id="playSecondLink">
+                            </div>
+                        </div>
+                        <div class="row md-row">
+                            <div class="col">
+                                <input type="text" class="form-control"
+                                    placeholder="Pubblication year (precompiled if 'edit' is pressed)"
+                                    id="playPubblicationYear">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control"
+                                    placeholder="Era (precompiled if 'edit' is pressed)" id="playEra">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control"
+                                    placeholder="Third image link (precompiled if 'edit' is pressed)"
+                                    id="playThirdLink">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger clearForm" data-bs-dismiss="modal"><i class="fa-solid fa-ban"></i> Cancel</button>
+                    <button type="button" class="btn btn-dark clearForm" id="submitButton"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
        
     <!-- Javascript -->          
     <script src="assets/plugins/popper.min.js"></script>

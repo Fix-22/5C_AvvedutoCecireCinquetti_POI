@@ -13928,29 +13928,29 @@ code {
 }
 
 .popover {
-  border-color: #e0f7e6
+  border-color: #f7e0e0
 }
 
 .bs-popover-left>.arrow::before,
 .bs-popover-auto[x-placement^="left"]>.arrow::before {
-  border-left-color: #e0f7e6
+  border-left-color: #f7e0e0
 }
 
 .bs-popover-right>.arrow::before,
 .bs-popover-auto[x-placement^="right"]>.arrow::before {
-  border-right-color: #e0f7e6
+  border-right-color: #f7e0e0
 }
 
 .bs-popover-top>.arrow::before,
 .bs-popover-auto[data-popper-placement^="top"]>.arrow::before,
 .bs-popover-auto[x-placement^="top"]>.arrow::before {
-  border-top-color: #e0f7e6
+  border-top-color: #f7e0e0
 }
 
 .bs-popover-bottom>.arrow::before,
 .bs-popover-auto[data-popper-placement^="bottom"]>.arrow::before,
 .bs-popover-auto[x-placement^="bottom"]>.arrow::before {
-  border-bottom-color: #e0f7e6
+  border-bottom-color: #f7e0e0
 }
 
 a.theme-link {
@@ -14032,7 +14032,7 @@ a.text-link:hover {
   padding-top: 0.875rem;
   padding-bottom: 0.875rem;
   height: 2.75rem;
-  border-color: #e0f7e6
+  border-color: #f7e0e0
 }
 
 .form-control:focus {
@@ -14681,6 +14681,17 @@ footer {
 .cta-section .container {
   position: relative;
   z-index: 10
+}
+
+.form-control:focus {
+  border-color: #EF233C !important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(63, 63, 63, 0.6) !important;
+}
+
+.md-row {
+  margin: 2% 0 2% 0;
+  display: flex !important;
+  place-items: center !important;
 }
 
 @media print {
