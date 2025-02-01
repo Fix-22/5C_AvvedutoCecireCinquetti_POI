@@ -195,6 +195,10 @@ img:hover:not(#map) {
     z-index: 2147483647 !important;
 }
 
+.docs-top-utilities > *{
+    margin-right: 1% !important;
+}
+
 #mapContainer {
     width: 600px;
     height: 45vh;

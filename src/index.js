@@ -134,8 +134,8 @@ fetch("/src/conf.json")
         '<a href="#admin" class="btn btn-primary"><i class="fa-solid fa-gear"></i> Administration</a>',
       ],
       [
-        '<a href="#admin" class="btn btn-primary"><i class="fa-solid fa-gear"></i> Administration</a>',
-        '<a href="#home" class="btn btn-primary"><i class="fa-solid fa-house"></i> Home</a>',
+        '<a href="#admin" class="btn btn-primary"><i class="fa-solid fa-gear"></i>Administration</a>',
+        '<a href="#home" class="btn btn-primary"><i class="fa-solid fa-house"></i>Home</a>',
       ],
       ['<a href="#home"><img src="/src/assets/home.png" alt="home"></a>'],
       [
