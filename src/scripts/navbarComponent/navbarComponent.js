@@ -4,48 +4,31 @@ export function generateNavBarComponent(parentElement,pubsub) {
     const navbarObject = {
         build: function(list) {
           elements = list;
+          console.log(elements)
           pubsub.subscribe("login",()=>{
             this.build([
-                '<a href="#home"><img src="/src/assets/home.png" alt="home"></a>',
-                '<a href="#home"><img src="/src/assets/logo.png" class="logo navbar-brand"></a>',
-                '<button type="button" class="btn btn-dark" id="addArticleButton" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="bi bi-file-earmark-plus"></i> Add an article</button>'
+                '<button type="button" class="btn btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="fa-solid fa-file-circle-plus"></i> Add an article</button>',
+				'<a href="#home" class="btn btn-primary"><i class="fa-solid fa-house"></i>Home</a>'
             ]);
             this.render();
           })
         },
         render: function() {
-            let item = 
-            ` <li class="nav-item">
-                %item
-            </li>`;
-
-            let newNavBar = 
-            `<nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav w-100 d-flex justify-content-between">`
-                            + (elements.map((e)=> item.replace("%item",e))).join("") +
-                        `</ul>
+            let newNavBar = `
+            <header class="header fixed-top">	 
+                <div class="branding docs-branding">
+                    <div class="container-fluid position-relative py-2 inline">
+                        <div class="docs-logo-wrapper">
+                            <div class="site-logo"><a class="navbar-brand" href="#home"><img class="logo-icon me-2" src="assets/images/coderdocs-logo.svg" alt="logo"><span class="logo-text d-none d-sm-inline">Shakespeare's<span class="text-alt"> places</span></span></a></div>    
+                        </div>
+                        <div class="docs-top-utilities d-flex justify-content-end align-items-center">`
+                            + elements.join("") + 
+                        `</div>
                     </div>
                 </div>
-            </nav>`;
+            </header>`;
+
             parentElement.innerHTML = newNavBar;
-            const btn = document.querySelector("#searchButton");
-            if (btn)  
-                btn.onclick = () => {
-                const container = document.querySelector("#searchbarContainer");
-                if (container.classList.contains("d-none")) {
-                    container.classList.remove("d-none");
-                }
-                else {
-                    container.classList.add("d-none");
-                }
-            }
         }
     };
     return navbarObject;

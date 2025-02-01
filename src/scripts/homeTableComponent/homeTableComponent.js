@@ -13,6 +13,7 @@ export const generateHomeTable = function(parentElement,pubsub)  {
             })
             pubsub.subscribe("cancel",()=>{this.render()})
             pubsub.subscribe("search",(input)=>{
+                console.log("dentro " + input)
                 let filterData = this.search(input);
                 let filterDataKeys = Object.keys(filterData);
                 this.renderFilter(filterData);

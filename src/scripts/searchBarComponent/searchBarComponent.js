@@ -1,33 +1,28 @@
-export const generateSearchbar = (parentElement,pubsub) => {
-    let placeholder;
-    
-    return {
-        build: (inputPlaceholder) => {
-            placeholder = inputPlaceholder;
-        },
-        render: () => {
-            let HTML = '<input type="search" class="form-control" placeholder="' + placeholder + '" id="searchText">'
+export const generateSearchbar = (parentElement, pubsub) => {
 
-            parentElement.innerHTML = HTML;
+  return {
+    render: () => {
+      let HTML = `
+                <form class="search-form w-100">
+                    <input type="text" placeholder="Search by place or play's title..." name="search" class="form-control search-input" id="searchText">
+                </form>`;
+      parentElement.innerHTML = HTML;
 
-            document.getElementById("searchText").oninput = () => {
-                if(document.getElementById("searchText").value === ""){
-                    pubsub.publish("cancel")
-                }
-            }
-
-            parentElement.addEventListener("keypress", function(event) {
-                if (event.key === "Enter") {
-                    let searchText = document.getElementById("searchText").value;
-                
-                    if (searchText) {
-                        pubsub.publish("search",searchText)
-                    }
-                    else {
-                        pubsub.publish("cancel")
-                    }
-                }
-              });
+      document.getElementById("searchText").oninput = () => {
+        if (document.getElementById("searchText").value === "") {
+          pubsub.publish("cancel");
         }
-    };
+      };        
+
+      parentElement.querySelector(".search-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        let searchText = document.getElementById("searchText").value;
+        if (searchText) {
+          pubsub.publish("search", searchText);
+        } else {
+          pubsub.publish("cancel");
+        }
+      });
+    },
+  };
 };

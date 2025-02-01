@@ -10,7 +10,7 @@
 }
 
 .places-table {
-    height: 35vh !important;
+    height: 45vh !important;
     overflow-y: scroll !important;
 }
 
@@ -40,10 +40,6 @@ ul.navbar-nav {
     height: 70px;
     aspect-ratio: 1;
     object-fit: scale-down !important;
-}
-
-div.container-fluid,.navbar {
-    background: #e6e6e6 !important;
 }
 
 .long-line {
@@ -200,7 +196,7 @@ img:hover:not(#map) {
 
 #mapContainer {
     width: 600px;
-    height: 300px;
+    height: 45vh;
     border-radius: 10px;
 }
 

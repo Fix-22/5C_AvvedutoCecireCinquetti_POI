@@ -42,21 +42,41 @@ export const generateLoginComponent = (parentElement,pubsub) => {
             }
         },
         renderForm: () => {
-            const html = `<div class="row justify-center">
-                            <div class="col-12">
-                                <div class="long-line"></div>
+            const html = `
+                <div class="page-header theme-bg-dark py-5 text-center position-relative">
+                <div class="theme-bg-shapes-right"></div>
+                <div class="theme-bg-shapes-left"></div>
+                <div class="container">
+                    <h1 class="page-heading single-col-max mx-auto">Login</h1>
+                    <div class="page-intro single-col-max mx-auto">Log in to access administration section.</div>
+                </div>
+                </div><!--//page-header-->
+                <div class="page-content">
+                    <div class="container text-center py-5">
+                        <div class="row py-4">
+                            <div class="col">
+                                <input type="text" class="form-control" id="inputUsername" placeholder="Username">
                             </div>
                         </div>
-                        <div class="row">
-                            <p class="topic">Login | POI - Shakespeare's Places</h1>
-                            <h1>Login</h1>
+                        <div class="row py-4">
+                            <div class="col">
+                                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                            </div>
                         </div>
-                        <form id="loginForm" class="inputs">
-                            <input type="text" class="form-control" id="inputUsername" placeholder="Username">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                            <button id="loginButton" type="button" class="btn btn-dark"><i class="bi bi-box-arrow-in-right"></i> Login</button>
-                            <div id="loginResult" class="form-text text-danger"></div>
-            </form>`;
+                        <div class="row py-4">
+                            <div class="col">
+                                <button type="button" class="btn btn-dark" id="loginButton">LOGIN</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <footer class="cta-section text-center py-5 theme-bg-dark position-relative">
+                <div class="theme-bg-shapes-right"></div>
+                <div class="theme-bg-shapes-left"></div>
+                <div class="container">
+                    <small class="copyright" id="footerText">ciaone</small>
+                </div>
+            </footer>`;
             parentElement.innerHTML = html;
 
             document.getElementById("loginButton").onclick = () => {

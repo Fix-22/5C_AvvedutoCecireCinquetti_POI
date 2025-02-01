@@ -14,7 +14,7 @@ const spinner = document.getElementById("spinner");
 const pages = document.getElementById("pages");
 const mapContainer = document.getElementById("mapContainer");
 const homeTableContainer = document.getElementById("home-tab");
-const searchbarContainer = document.getElementById("searchbarContainer");
+const searchbarContainer = document.getElementById("search-box");
 const loginContainer = document.getElementById("loginContainer");
 const adminTableContainer = document.getElementById("adm-tab");
 const modalBody = document.getElementById("modalBody");
@@ -79,26 +79,21 @@ const generateArticles = (data) => {
     articlesContainer.innerHTML = div;
 }
 
-fetch("./conf.json").then(r => r.json()).then(data => {
+fetch("/src/conf.json").then(r => r.json()).then(data => {
     const navbarEl = [
         [
-            '<button type="button" class="btn btn-light" id="searchButton"><i class="bi bi-search"></i> Search</button>',
-            '<a href="#home"><img src="/src/assets/logo.png" class="logo navbar-brand"></a>',
-            '<a href="#admin"><button type="button" class="btn btn-dark"><i class="bi bi-gear"></i> Administration</button></a>'
+           '<a href="#admin" class="btn btn-primary"><i class="fa-solid fa-gear"></i> Administration</a>'
+        ],
+        [
+            '<a href="#admin" class="btn btn-primary"><i class="fa-solid fa-gear"></i> Administration</a>',
+            '<a href="#home" class="btn btn-primary"><i class="fa-solid fa-house"></i> Home</a>',
         ],
         [
             '<a href="#home"><img src="/src/assets/home.png" alt="home"></a>',
-            '<a href="#home"><img src="/src/assets/logo.png" class="logo navbar-brand"></a>',
-            '<a href="#admin"><button type="button" class="btn btn-dark"><i class="bi bi-gear"></i> Administration</button></a>'
         ],
         [
-            '<a href="#home"><img src="/src/assets/home.png" alt="home"></a>',
-            '<a href="#home"><img src="/src/assets/logo.png" class="logo navbar-brand"></a>',
-        ],
-        [
-            '<a href="#home"><img src="/src/assets/home.png" alt="home"></a>',
-            '<a href="#home"><img src="/src/assets/logo.png" class="logo navbar-brand"></a>',
-            '<button type="button" class="btn btn-dark" id="addArticleButton" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="bi bi-file-earmark-plus"></i> Add an article</button>'
+            '<button type="button" class="btn btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="fa-solid fa-file-circle-plus"></i> Add an article</button>',
+            '<a href="#home" class="btn btn-primary"><i class="fa-solid fa-house"></i> Home</a>'
         ]
     ];
 
@@ -139,7 +134,6 @@ fetch("./conf.json").then(r => r.json()).then(data => {
         map.setData(remoteData);
         map.render();
 
-        searchbar.build("Insert play's title or place");
         searchbar.render();
 
         loginComponent.build(cacheToken, "private");
@@ -147,6 +141,7 @@ fetch("./conf.json").then(r => r.json()).then(data => {
         setNavbar(remoteData);
 
         adminTable.build(["Play's title", "Manage"], remoteData);
+        document.querySelectorAll(".copyright").forEach((e)=> e.innerHTML = "<p>© " + (new Date().getFullYear()) + ' - Luca Avveduto, Simone Cecire, Simone Cinquetti - All rights reserved.</p> <p>Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</p>');
 
         let focused;
         
@@ -198,7 +193,12 @@ fetch("./conf.json").then(r => r.json()).then(data => {
 
         spinner.classList.add("d-none");
         window.addEventListener("popstate", () => {
+            document.querySelectorAll(".copyright").forEach((e)=> e.innerHTML = "<p>© " + (new Date().getFullYear()) + ' - Luca Avveduto, Simone Cecire, Simone Cinquetti - All rights reserved.</p> <p>Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</p>');
             setNavbar(remoteData);
+            if (new URL(document.location.href).hash==="#home") {
+                map.resetZoom();
+                map.render();
+            }
         });
     });
 });
