@@ -192,6 +192,7 @@ img:hover:not(#map) {
     display: flex;
     justify-content: center;
     place-items: center;
+    z-index: 2147483647 !important;
 }
 
 #mapContainer {
