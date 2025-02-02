@@ -221,6 +221,14 @@ img:hover:not(#map) {
         margin-bottom: 10%;
     }
 
+    #adm-tab > table > tbody > tr > td > button:first-child {
+        margin-bottom: 5%;
+    }
+
+    .places-table > table > tbody > tr {
+        height: 20vh !important;
+    }
+
     #adm-tab {
         height: 60vh !important;
         overflow-y: scroll !important;
