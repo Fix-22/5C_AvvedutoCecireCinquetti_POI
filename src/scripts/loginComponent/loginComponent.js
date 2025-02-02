@@ -68,15 +68,11 @@ export const generateLoginComponent = (parentElement,pubsub) => {
                                 <button type="button" class="btn btn-dark" id="loginButton">LOGIN</button>
                             </div>
                         </div>
+                        <div class="row py-4">
+                            <p id="loginResult"></p>
+                        </div>
                     </div>
-            </div>
-            <footer class="cta-section text-center py-5 theme-bg-dark position-relative">
-                <div class="theme-bg-shapes-right"></div>
-                <div class="theme-bg-shapes-left"></div>
-                <div class="container">
-                    <small class="copyright" id="footerText">ciaone</small>
-                </div>
-            </footer>`;
+            </div>`;
             parentElement.innerHTML = html;
 
             document.getElementById("loginButton").onclick = () => {

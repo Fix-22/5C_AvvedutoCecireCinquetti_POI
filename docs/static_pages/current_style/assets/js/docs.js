@@ -1,13 +1,12 @@
 "use strict";
 
-let sidebarToggler, sidebars, sidebarLinks;
+const sidebarToggler = document.querySelector("#docs-sidebar-toggler");
+const sidebars = document.querySelectorAll("#docs-sidebar");
+const sidebarLinks = document.querySelectorAll("#docs-sidebar .scrollto");
 
 const checkElements = setInterval(() => {
-  sidebarToggler = document.getElementById("docs-sidebar-toggler");
-  sidebars = document.querySelectorAll("#docs-sidebar");
-  sidebarLinks = document.querySelectorAll("#docs-sidebar .scrollto");
-
-  if (sidebarToggler && sidebars && sidebarLinks) {
+  if (sidebarToggler && sidebars.length > 0 && sidebarLinks) {
+    alert(9)
     clearInterval(checkElements);
     responsiveSidebar();
 
@@ -35,17 +34,17 @@ const checkElements = setInterval(() => {
     }
 
     sidebarToggler.addEventListener("click", () => {
-      sidebars.forEach(e => {
-        if (e.classList.contains("sidebar-visible")) {
-          console.log("visible");
-          e.classList.remove("sidebar-visible");
-          e.classList.add("sidebar-hidden");
-        } else {
-          console.log("hidden");
-          e.classList.remove("sidebar-hidden");
-          e.classList.add("sidebar-visible");
-        }
-      });
+        sidebars.forEach(e => {
+          if (e.classList.contains("sidebar-visible")) {
+            console.log("visible");
+            e.classList.remove("sidebar-visible");
+            e.classList.add("sidebar-hidden");
+          } else {
+            console.log("hidden");
+            e.classList.remove("sidebar-hidden");
+            e.classList.add("sidebar-visible");
+          }
+        });
     });
 
     /* ===== Smooth scrolling ====== */

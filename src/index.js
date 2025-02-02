@@ -40,17 +40,17 @@ const articleTemplate = `
 	    <div id="docs-sidebar" class="docs-sidebar">
 		    <nav id="docs-nav" class="docs-nav navbar">
 			    <ul class="section-items list-unstyled nav flex-column pb-3">
-				    <li class="nav-item section-title"><a class="nav-link scrollto active" href="#main"><span class="theme-icon-holder me-2"><i class="fa-solid fa-book"></i></span>%PLAYTITLE</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#mainImage">Main image</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#resume">Resume</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#otherImages">Other images</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#characters">Main characters</a></li>
+				    <li class="nav-item section-title"><a class="nav-link scrollto active" href="#main-%PLAYTITLE"><span class="theme-icon-holder me-2"><i class="fa-solid fa-book"></i></span>%PLAYTITLE</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#mainImage-%PLAYTITLE">Main image</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#resume-%PLAYTITLE">Resume</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#otherImages-%PLAYTITLE">Other images</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#characters-%PLAYTITLE">Main characters</a></li>
 			    </ul>
 		    </nav><!--//docs-nav-->
 	    </div>
 	    <div class="docs-content">
 		    <div class="container">
-			    <article class="docs-article" id="main">
+			    <article class="docs-article" id="main-%PLAYTITLE">
 				    <header class="docs-header">
 					    <h1 class="docs-heading">%PLAYTITLE</h1>
 						<div class="callout-block callout-block-info">
@@ -62,19 +62,19 @@ const articleTemplate = `
                         </div><!--//callout-block-->
 				    </header>
 
-					<section class="docs-section" id="mainImage">
+					<section class="docs-section" id="mainImage-%PLAYTITLE">
 						<div class="d-flex justify-content-center align-items-center">
 							<a target="_blank" href="%IMGLINK1"><img class="figure-img img-fluid shadow rounded" src="%IMGLINK1" alt="Main image" title="Main image"/></a>
 						</div>
 					</section>
 
-				    <section class="docs-section" id="resume">
+				    <section class="docs-section" id="resume-%PLAYTITLE">
 						<h2 class="section-heading">Resume</h2>
 						<p>%RESUME</p>
                        
 					</section><!--//section-->
 					
-					<section class="docs-section" id="otherImages">
+					<section class="docs-section" id="otherImages-%PLAYTITLE">
 						<div class="row mb-3 align-items-center justify-content-center">
 							<div class="col-md-6 mb-1">
 								<a target="_blank" href="%IMGLINK2"><img class="figure-img img-fluid shadow rounded" src="%IMGLINK2" alt="Other image 1" title="Other image 1"/></a>
@@ -85,20 +85,11 @@ const articleTemplate = `
 						</div>
 					</section>
 					
-					<section class="docs-section" id="characters">
+					<section class="docs-section" id="characters-%PLAYTITLE">
 						<h2 class="section-heading">Main characters</h2>
 						<p>%CHARACTERS</p>
 					</section><!--//section-->
 			    </article>
-				
-
-			    <section class="cta-section text-center py-5 theme-bg-dark position-relative">
-					<div class="theme-bg-shapes-right"></div>
-					<div class="theme-bg-shapes-left"></div>
-					<div class="container text-center py-5">
-						<small class="copyright" id="footerText"></small>
-					</div>
-				</section><!--//cta-section-->
 		    </div> 
 	    </div>
     </div>
@@ -126,21 +117,106 @@ const generateArticles = (data) => {
   articlesContainer.innerHTML = div;
 };
 
+const checkElements = () => {
+  const sidebarToggler = document.querySelector("#docs-sidebar-toggler");
+  const sidebars = document.querySelectorAll("#docs-sidebar");
+  const sidebarLinks = document.querySelectorAll("#docs-sidebar .scrollto");
+
+  if (sidebarToggler && sidebars.length > 0 && sidebarLinks) {
+    clearInterval(checkElements);
+    responsiveSidebar();
+
+    window.onresize = function () {
+      responsiveSidebar();
+    };
+
+    function responsiveSidebar() {
+      let w = window.innerWidth;
+      if (w >= 1200) {
+        // if larger
+        console.log("larger");
+        sidebars.forEach(e => {
+          e.classList.remove("sidebar-hidden");
+          e.classList.add("sidebar-visible");
+        });
+      } else {
+        // if smaller
+        console.log("smaller");
+        sidebars.forEach(e => {
+          e.classList.add("sidebar-hidden");
+          e.classList.remove("sidebar-visible");
+        });
+      }
+    }
+
+    sidebarToggler.addEventListener("click", () => {
+        sidebars.forEach(e => {
+          if (e.classList.contains("sidebar-visible")) {
+            console.log("visible");
+            e.classList.remove("sidebar-visible");
+            e.classList.add("sidebar-hidden");
+          } else {
+            console.log("hidden");
+            e.classList.remove("sidebar-hidden");
+            e.classList.add("sidebar-visible");
+          }
+        });
+    });
+
+    /* ===== Smooth scrolling ====== */
+    /*  Note: You need to include smoothscroll.min.js (smooth scroll behavior polyfill) on the page to cover some browsers */
+    /* Ref: https://github.com/iamdustan/smoothscroll */
+
+    sidebarLinks.forEach((sidebarLink) => {
+      sidebarLink.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        var target = sidebarLink.getAttribute("href").replace("#", "");
+
+        //console.log(target);
+
+        document.getElementById(target).scrollIntoView({ behavior: "smooth" });
+
+        //Collapse sidebar after clicking
+        sidebars.forEach(e => {
+          if (
+            e.classList.contains("sidebar-visible") &&
+            window.innerWidth < 1200
+          ) {
+            e.classList.remove("sidebar-visible");
+            e.classList.add("sidebar-hidden");
+          }
+        });
+      });
+    });
+
+    /* ===== Gumshoe SrollSpy ===== */
+    /* Ref: https://github.com/cferdinandi/gumshoe  */
+    // Initialize Gumshoe
+    var spy = new Gumshoe("#docs-nav a", {
+      offset: 69, //sticky header height
+    });
+
+    /* ====== SimpleLightbox Plugin ======= */
+    /*  Ref: https://github.com/andreknieriem/simplelightbox */
+
+    var lightbox = new SimpleLightbox(".simplelightbox-gallery a", {
+      /* options */
+    });
+  }
+}; // Controlla ogni 100 ms
+
 fetch("/src/conf.json")
   .then((r) => r.json())
   .then((data) => {
     const navbarEl = [
       [
-        '<a href="#admin" class="btn btn-primary"><i class="fa-solid fa-gear"></i> Administration</a>',
+        '<a href="#admin" class="btn btn-primary"><i class="fa-solid fa-gear"></i> Admin</a>',
       ],
       [
-        '<a href="#admin" class="btn btn-primary"><i class="fa-solid fa-gear"></i> Administration</a>',
+        '<a href="#admin" class="btn btn-primary"><i class="fa-solid fa-gear"></i> Admin</a>',
         '<a href="#home" class="btn btn-primary"><i class="fa-solid fa-house"></i> Home</a>',
-        `<button id="docs-sidebar-toggler" class="docs-sidebar-toggler docs-sidebar-visible me-2 d-xl-none" type="button">
-			<span></span>
-			<span></span>
-			<span></span>
-		</button>`
+        '<button id="docs-sidebar-toggler" class="btn btn-info docs-sidebar-visible me-2 d-xl-none" type="button"><i class="fa-solid fa-bars"></i></button>',
       ],
       ['<a href="#home" class="btn btn-primary"><i class="fa-solid fa-house"></i> Home</a>'],
       [
@@ -210,6 +286,8 @@ fetch("/src/conf.json")
               ' - Luca Avveduto, Simone Cecire, Simone Cinquetti - All rights reserved.</p> <p>Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</p>')
         );
 
+      checkElements();
+
       let focused;
 
       pubsub.subscribe("el-edited", (playTitle) => {
@@ -273,9 +351,9 @@ fetch("/src/conf.json")
                 ' - Luca Avveduto, Simone Cecire, Simone Cinquetti - All rights reserved.</p> <p>Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</p>')
           );
         setNavbar(remoteData);
+        checkElements();
         if (new URL(document.location.href).hash === "#home") {
           map.resetZoom();
-          map.render();
         }
       });
     });

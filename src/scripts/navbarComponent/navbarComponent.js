@@ -4,7 +4,6 @@ export function generateNavBarComponent(parentElement,pubsub) {
     const navbarObject = {
         build: function(list) {
           elements = list;
-          console.log(elements)
           pubsub.subscribe("login",()=>{
             this.build([
                 '<button type="button" class="btn btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="fa-solid fa-file-circle-plus"></i> Add an article</button>',
