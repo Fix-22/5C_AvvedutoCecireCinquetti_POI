@@ -22,7 +22,7 @@ export const generateAdminTable = (parentElement,pubsub) => {
             let dataKeys = Object.keys(data);
 
             dataKeys.forEach(e => {
-                html += '<tr><td><a href="#article-' + e.replaceAll(" ", "-") + '"id="' + e + '" class="articleLink">' + e + ' <i class="bi bi-box-arrow-up-right"></i></a></td><td><button type="button" id="edit-' + e + '" class="btn btn-warning editButton" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="bi bi-pencil-square"></i> Edit</button> <button type="button" id="delete-' + e + '" class="btn btn-danger deleteButton"><i class="bi bi-trash"></i> Delete</button></td></tr>';
+                html += '<tr><td><a href="#article-' + e.replaceAll(" ", "-") + '"id="' + e + '" class="articleLink">' + e + ' <i class="fa-solid fa-arrow-up-right-from-square"></i></a></td><td><button type="button" id="edit-' + e + '" class="btn btn-warning editButton" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="fa-solid fa-pen-to-square"></i> Edit</button> <button type="button" id="delete-' + e + '" class="btn btn-danger deleteButton"><i class="fa-solid fa-trash"></i> Delete</button></td></tr>';
             });
 
             html += "</tbody></table>";
