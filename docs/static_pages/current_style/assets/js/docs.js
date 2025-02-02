@@ -1,13 +1,13 @@
 "use strict";
 
-let sidebarToggler, sidebar, sidebarLinks;
+let sidebarToggler, sidebars, sidebarLinks;
 
 const checkElements = setInterval(() => {
   sidebarToggler = document.getElementById("docs-sidebar-toggler");
-  sidebar = document.getElementById("docs-sidebar");
+  sidebars = document.querySelectorAll("#docs-sidebar");
   sidebarLinks = document.querySelectorAll("#docs-sidebar .scrollto");
 
-  if (sidebarToggler && sidebar && sidebarLinks) {
+  if (sidebarToggler && sidebars && sidebarLinks) {
     clearInterval(checkElements);
     responsiveSidebar();
 
@@ -20,26 +20,32 @@ const checkElements = setInterval(() => {
       if (w >= 1200) {
         // if larger
         console.log("larger");
-        sidebar.classList.remove("sidebar-hidden");
-        sidebar.classList.add("sidebar-visible");
+        sidebars.forEach(e => {
+          e.classList.remove("sidebar-hidden");
+          e.classList.add("sidebar-visible");
+        });
       } else {
         // if smaller
         console.log("smaller");
-        sidebar.classList.remove("sidebar-visible");
-        sidebar.classList.add("sidebar-hidden");
+        sidebars.forEach(e => {
+          e.classList.add("sidebar-hidden");
+          e.classList.remove("sidebar-visible");
+        });
       }
     }
 
     sidebarToggler.addEventListener("click", () => {
-      if (sidebar.classList.contains("sidebar-visible")) {
-        console.log("visible");
-        sidebar.classList.remove("sidebar-visible");
-        sidebar.classList.add("sidebar-hidden");
-      } else {
-        console.log("hidden");
-        sidebar.classList.remove("sidebar-hidden");
-        sidebar.classList.add("sidebar-visible");
-      }
+      sidebars.forEach(e => {
+        if (e.classList.contains("sidebar-visible")) {
+          console.log("visible");
+          e.classList.remove("sidebar-visible");
+          e.classList.add("sidebar-hidden");
+        } else {
+          console.log("hidden");
+          e.classList.remove("sidebar-hidden");
+          e.classList.add("sidebar-visible");
+        }
+      });
     });
 
     /* ===== Smooth scrolling ====== */
@@ -57,13 +63,15 @@ const checkElements = setInterval(() => {
         document.getElementById(target).scrollIntoView({ behavior: "smooth" });
 
         //Collapse sidebar after clicking
-        if (
-          sidebar.classList.contains("sidebar-visible") &&
-          window.innerWidth < 1200
-        ) {
-          sidebar.classList.remove("sidebar-visible");
-          sidebar.classList.add("sidebar-hidden");
-        }
+        sidebars.forEach(e => {
+          if (
+            e.classList.contains("sidebar-visible") &&
+            window.innerWidth < 1200
+          ) {
+            e.classList.remove("sidebar-visible");
+            e.classList.add("sidebar-hidden");
+          }
+        });
       });
     });
 

@@ -21,7 +21,7 @@ export function generateNavBarComponent(parentElement,pubsub) {
                         <div class="docs-logo-wrapper">` +
                             (!(new URL(document.location.href).hash).includes("#article") ? 
                             `<div class="site-logo"><a class="navbar-brand" href="#home"><img class="logo-icon me-2" src="assets/images/coderdocs-logo.svg" alt="logo"><span class="logo-text d-none d-sm-inline">Shakespeare's<span class="text-alt"> places</span></span></a></div>` 
-                            : "") + 
+                            : `<div class="site-logo"><a class="navbar-brand" href="#home"><img class="logo-icon me-2" src="assets/images/coderdocs-logo.svg" alt="logo"><span class="logo-text d-none d-sm-inline">Shakespeare's<span class="text-alt"> places</span></span></a></div>`) + 
                         `</div>
                         <div class="docs-top-utilities d-flex justify-content-end align-items-center">` +
                             elements.join("") + 
