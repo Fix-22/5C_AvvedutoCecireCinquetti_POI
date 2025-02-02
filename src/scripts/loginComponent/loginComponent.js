@@ -65,7 +65,7 @@ export const generateLoginComponent = (parentElement,pubsub) => {
                         </div>
                         <div class="row py-4">
                             <div class="col">
-                                <button type="button" class="btn btn-dark" id="loginButton">LOGIN</button>
+                                <button type="button" class="btn btn-dark" id="loginButton"><i class="fa-solid fa-right-to-bracket"></i> LOGIN</button>
                             </div>
                         </div>
                         <div class="row py-4">
