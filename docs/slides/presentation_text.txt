@@ -1,0 +1,38 @@
+2
+POI - Shakespeare's Places is a Single page web application that connects ten famous Shakespeare’s plays to real-world locations.
+It lets the user explore the setting and read the resume of each play.
+It was made following the Component-Based Architecture and using the JavaScript programming language.
+
+3
+A web application is a software (a computer program that has some inputs and some outputs) that can be accessed via web.
+A user, using a browser, sends a request to a web server (a computer that offers services to other computers) that processes the request and sends back a response. The response contains an HTML file that is processed by the browser and then displayed on screen. The HTML file can have CSS, a specific code to change the graphical style and JavaScript code to let the user interact with the page.
+The application which runs in the user’s browser can itself connect to other servers that offer various types of services (maps, storage, etc…).
+A web application is made of two parts:
+-One running on the server, that processes data sent to it.
+-One running on the client (user’s device), that interacts with the user and let him communicate with the server.
+
+5
+An SPA is a web application, written in the JavaScript language, which is made by a single HTML file that contains many «logical pages» (which in the traditional way of making websites should be in separate HTML files) shown one at a time via code.
+With this type of applications the loading of the page is immediate, because the request of the HTML file to the server is made only once (and not every time a link is clicked, like in the traditional way). The user has the perception of using a local application and the use of internet connection is limited to data exchanges with the servers.
+
+6
+In medium or large software projects it’s always best practice to divide the development of different parts of an application in many components, 
+doing so lets the developers work on different parts of the code in parallel and also makes the code more readable maintainable.
+- SRP (single responsibility principle): one component is responsible of only one thing
+- HIGH COHESION: responsibility distribution
+- LOW COUPLING: low dependencies between components
+
+7
+Our website is mainly divided in 3 pages, 2 for the user and 1 for the admin, the first page is loaded when we open the website, from here we can see all the features,
+starting from the top there is a searchbar that lets us look up any article we want and in the top right a button to access administration
+
+8
+Starting from the searchbar, we can look up and filter any article present in the list below, we can also select an article directly from the list to move the map to the location of the selected article;
+by pressing on the pointer of a location, a small description of it will appear.
+
+9
+This is the article page, here we can observe the content and informations
+We showcased in each article the year of release, where it’s located, a short recap of each act of the story, the main characters and some images to fully immerse the user in the location that is rappresented.
+
+10
+Finally, from the top right admin button, we can access the login page were we can see what is going on behind the scenes, here we will be able to modify, delete or create new articles.
