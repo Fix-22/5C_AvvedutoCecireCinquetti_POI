@@ -13954,14 +13954,12 @@ code {
 }
 
 a.theme-link {
-  color: #252930;
+  color: #fff;
   text-decoration: underline;
-  text-decoration-color: rgba(37, 41, 48, 0.3)
 }
 
 a.theme-link:hover {
-  color: #EF233C;
-  text-decoration-color: rgba(40, 183, 107, 0.8)
+  color: #fff;
 }
 
 a.text-link {

@@ -7,7 +7,7 @@ export function generateNavBarComponent(parentElement,pubsub) {
           pubsub.subscribe("login",()=>{
             this.build([
                 '<button type="button" class="btn btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="fa-solid fa-file-circle-plus"></i> Add an article</button>',
-				'<a href="#home" class="btn btn-primary"><i class="fa-solid fa-house"></i>Home</a>'
+				'<a href="#home" class="btn btn-primary"><i class="fa-solid fa-house"></i> Home</a>'
             ]);
             this.render();
           })

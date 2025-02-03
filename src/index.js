@@ -206,7 +206,7 @@ const checkElements = () => {
   }
 }; // Controlla ogni 100 ms
 
-fetch("/src/conf.json")
+fetch("conf.json")
   .then((r) => r.json())
   .then((data) => {
     const navbarEl = [
