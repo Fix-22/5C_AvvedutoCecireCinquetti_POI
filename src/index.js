@@ -14,24 +14,24 @@ const spinner = document.getElementById("spinner");
 const pages = document.getElementById("pages");
 const mapContainer = document.getElementById("mapContainer");
 const homeTableContainer = document.getElementById("home-tab");
-const searchbarContainer = document.getElementById("search-box");
 const loginContainer = document.getElementById("loginContainer");
 const adminTableContainer = document.getElementById("adm-tab");
 const modalBody = document.getElementById("modalBody");
 const articlesContainer = document.getElementById("articles");
+let searchbarContainer;
 
 const pubsub = generatePubSub();
 const fetchComponent = generateFetchComponent();
 const geoencoder = generateGeoencoder();
 const map = generateMap(mapContainer, pubsub);
 const homeTable = generateHomeTable(homeTableContainer, pubsub);
-const searchbar = generateSearchbar(searchbarContainer, pubsub);
 const loginComponent = generateLoginComponent(loginContainer, pubsub);
 const adminTable = generateAdminTable(adminTableContainer, pubsub);
 const navbar = generateNavBarComponent(
   document.querySelector(".navbarContainer"),
   pubsub
 );
+let searchbar;
 const adminForm = generateForm(modalBody, pubsub);
 
 const articleTemplate = `
@@ -134,14 +134,12 @@ const checkElements = () => {
       let w = window.innerWidth;
       if (w >= 1200) {
         // if larger
-        console.log("larger");
         sidebars.forEach(e => {
           e.classList.remove("sidebar-hidden");
           e.classList.add("sidebar-visible");
         });
       } else {
         // if smaller
-        console.log("smaller");
         sidebars.forEach(e => {
           e.classList.add("sidebar-hidden");
           e.classList.remove("sidebar-visible");
@@ -152,11 +150,9 @@ const checkElements = () => {
     sidebarToggler.addEventListener("click", () => {
         sidebars.forEach(e => {
           if (e.classList.contains("sidebar-visible")) {
-            console.log("visible");
             e.classList.remove("sidebar-visible");
             e.classList.add("sidebar-hidden");
           } else {
-            console.log("hidden");
             e.classList.remove("sidebar-hidden");
             e.classList.add("sidebar-visible");
           }
@@ -172,8 +168,6 @@ const checkElements = () => {
         e.preventDefault();
 
         var target = sidebarLink.getAttribute("href").replace("#", "");
-
-        //console.log(target);
 
         document.getElementById(target).scrollIntoView({ behavior: "smooth" });
 
@@ -211,6 +205,7 @@ fetch("conf.json")
   .then((data) => {
     const navbarEl = [
       [
+        '<div class="top-search-box d-md-flex" id="search-box"></div>',
         '<a href="#admin" class="btn btn-primary"><i class="fa-solid fa-gear"></i> Admin</a>',
       ],
       [
@@ -240,10 +235,14 @@ fetch("conf.json")
 
       const setNavbar = (inputData) => {
         const keys = Object.keys(inputData);
+        let home = false;
 
         const url = new URL(document.location.href);
         let nav;
-        if (!url.hash || url.hash === "#home") nav = navbarEl[0];
+        if (!url.hash || url.hash === "#home") {
+          nav = navbarEl[0];
+          home = true;
+        }
         else if (
           keys.indexOf(
             url.hash.replace("#article-", "").replaceAll("-", " ")
@@ -257,6 +256,12 @@ fetch("conf.json")
         else nav = navbarEl[0];
         navbar.build(nav);
         navbar.render();
+        
+        if (home) {
+          searchbarContainer = document.getElementById("search-box");
+          searchbar = generateSearchbar(searchbarContainer, pubsub);
+          searchbar.render();
+        }
       };
 
       generateArticles(remoteData);
@@ -268,8 +273,6 @@ fetch("conf.json")
       map.build([46.064811, 16.767506]);
       map.setData(remoteData);
       map.render();
-
-      searchbar.render();
 
       loginComponent.build(cacheToken, "private");
       loginComponent.renderForm();
@@ -354,6 +357,7 @@ fetch("conf.json")
         checkElements();
         if (new URL(document.location.href).hash === "#home") {
           map.resetZoom();
+          homeTable.render();
         }
       });
     });

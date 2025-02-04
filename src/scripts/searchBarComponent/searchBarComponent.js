@@ -4,7 +4,7 @@ export const generateSearchbar = (parentElement, pubsub) => {
     render: () => {
       let HTML = `
                 <form class="search-form w-100">
-                    <input type="text" placeholder="Search by place or play's title..." name="search" class="form-control search-input" id="searchText">
+                    <input type="text" placeholder="Search..." name="search" class="form-control search-input" id="searchText">
                 </form>`;
       parentElement.innerHTML = HTML;
 

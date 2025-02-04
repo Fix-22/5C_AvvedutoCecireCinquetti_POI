@@ -8,7 +8,7 @@ export const generateMap = function (parentElement,pubsub) {
     const mapObject = {
         build: function(inputStartCoords) {
             startCoords = inputStartCoords;
-            zoom = 3;
+            zoom = 4;
             map = L.map(parentElement).setView(startCoords, zoom);
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,

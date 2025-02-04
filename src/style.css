@@ -103,7 +103,7 @@ nav, .navbarContainer {
 }
 
 #searchText {
-    border: 2px solid black !important;
+    border: 2px solid #EF233C !important;
 }
 
 .form-control:focus {
@@ -201,12 +201,18 @@ img:hover:not(#map) {
 }
 
 #mapContainer {
-    width: 600px;
-    height: 45vh;
+    width: 100vh;
+    height: 70vh;
     border-radius: 10px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
+    #mapContainer {
+        width: 100vh;
+        height: 40vh;
+        border-radius: 10px;
+    }
+
     .content {
         font-size: smaller;
     }
